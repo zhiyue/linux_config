@@ -1,0 +1,52 @@
+#!/bin/bash
+#notice: ubuntu must reconfig bash
+#        sudo ln -sf /bin/bash /bin/sh
+#bash_profile
+unset USERNAME
+
+# local variables
+export PATH=/bin:/sbin:/usr/sbin:/usr/bin:/usr/local/bin:~/bin
+export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib
+
+export JAVA_HOME=/home/tscadmin/java/current
+#export JRE_HOME=${JAVA_HOME}/jre
+
+export CLASSPATH=$HADOOP_HOME/lib:$JAVA_HOME/lib:$JRE_HOME/lib
+
+export PATH=$PATH:$HADOOP_HOME/bin:$JAVA_HOME/bin:$JRE_HOME/bin:$HIVE_HOME
+
+#设置了Ls的目录颜色
+export HOSTSHORT=`hostname`
+export OS=`uname`;
+
+#export LC_ALL='zh_CN.GBK'
+export LC_ALL='en_US.UTF-8'
+#export LANG='zh_CN.GBK'
+export LANG='en_US.UTF-8'
+
+export SVN_EDITOR=vim
+
+#shell promaote and title.
+PROMPT_COMMAND='echo -ne "\033]0;[${HOSTSHORT}:`basename $PWD`\$]${PWD}\007"'
+PS1='[\u@\h:${YROOT_NAME}\w\$] '
+
+#.bashrc
+if [ -f /etc/bashrc ]; then 
+        . /etc/bashrc
+fi
+
+#all aliases
+ALIASES=`\ls ~/.*aliases`
+for f in $ALIASES
+do
+  if [ -f $f ];then
+     . $f
+  fi
+done
+
+# svn command auto completion
+if [ -f ~/.bash_svn_completion ]; then
+    . ~/.bash_svn_completion
+fi
+
+
