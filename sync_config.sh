@@ -3,37 +3,8 @@ function batch_sync_profile()
     # tar the private setting.
     tar czvf profile.tar.gz .bash_profile .bash_svn_completion .vimrc .ssh .dir_colors .xtail >/dev/null
 
-    #cmatch devel and testing.
-    #group_sync_profile cmdev 1 3 .corp.cnb
-    #group_sync_profile cmtest 2 3 .corp.cnb
+    sync_profile $1
 
-    # imatch test.
-    #group_sync_profile imtest 1 3 .corp.cnb
-
-    # bsdb and p4pqa.
-    #sync_profile $p4pqa
-    #sync_profile $bsdb
-    #sync_profile $wangcs
-    #sync_profile $settle
-    sync_profile test8.corp.alimama.com
-
-    # alimama testing.
-    #group_sync_profile test 1 6 .corp.alimama.com
-    #group_sync_profile test 8 9 .corp.alimama.com
-    #group_sync_profile dev 1 5 .corp.alimama.com
-    #group_sync_profile db 1 2 .corp.alimama.com
-
-    #sync_profile $mm3vm1
-    #sync_profile $mm3vm2
-    #sync_profile $mm3vm3
-    #sync_profile $mm3vm4
-    #sync_profile $mm8vm1
-    #sync_profile $mm8vm2
-    #sync_profile $mm8vm3
-    #sync_profile $mm8vm4
-    
-    # imatch test.
-    #group_sync_profile imtest 1 3 .corp.cnb
     rm profile.tar.gz
 }
 

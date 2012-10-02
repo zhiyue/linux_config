@@ -18,7 +18,19 @@ ln -sf $ALIASES_DIR/dir_colors ~/.dir_colors
 
 #vim config
 ln -sf $CF_DIR/vim ~/.vim
+if [ -L $CF_DIR/vim/vim ]
+then 
+    rm $CF_DIR/vim/vim
+fi
 ln -sf $CF_DIR/vim/vimrc ~/.vimrc
 
 #svn
 ln -sf $ALIASES_DIR/bash_svn_completion ~/.bash_svn_completion
+
+#bin
+ln -sf $CF_DIR/bin ~/bin
+
+if [ ! -d ~/tmp ]
+then
+    mkdir ~/tmp
+fi
