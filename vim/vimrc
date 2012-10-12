@@ -22,11 +22,16 @@ set nocompatible
 set autoread          " 文件修改之后自动载入。
 set shortmess=atI       " 启动的时候不显示那个援助索马里儿童的提示
 
+set title
+
 " 取消备份。
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
 set noswapfile
+
+"set backup
+"set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 "粘贴时保持格式
 set paste
@@ -49,10 +54,6 @@ set tm=500
 "显示行号：
 set number
 set nowrap                    " 取消换行。
-""为方便复制，用<F2>开启/关闭行号显示:
-nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
-nnoremap <F3> :set list!<CR>:set foldcolumn=0<CR>
-nnoremap <F4> :set wrap!<CR>:set foldcolumn=0<CR>
 
 
 "括号配对情况
@@ -85,6 +86,7 @@ set foldmethod=syntax
 
 set tabstop=4                " 设置Tab键的宽度        [等同的空格个数]
 set shiftwidth=4
+
 set expandtab                " 将Tab自动转化成空格    [需要输入真正的Tab键时，使用 Ctrl+V + Tab]
 " 按退格键时可以一次删掉 4 个空格
 set softtabstop=4
@@ -99,11 +101,14 @@ set si "Smart indent
 set ruler
 ""在状态栏显示正在输入的命令
 set showcmd
+" Show current mode
+set showmode  
 
 " Set 7 lines to the cursor - when moving vertically using j/k 上下滚动,始终在中间
 set so=7
 
 "set cursorline              " 突出显示当前行
+"set winwidth=79
 
 " 命令行（在状态行下）的高度，默认为1，这里是2
 "set cmdheight=2
@@ -111,7 +116,7 @@ set so=7
 "set statusline=%F%m%r%h%w\[POS=%l,%v][%p%%]\%{strftime(\"%d/%m/%y\ -\ %H:%M\")}
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 " Always show the status line
-"set laststatus=2
+set laststatus=2
 
 
 "==========================================
@@ -122,14 +127,15 @@ syntax enable
 syntax on
 
 "配色方案 三种,选一个
+"set t_Co=256
+set background=dark
+
 "colorscheme darkblue          " 深蓝色配色方案。
 
-"colorscheme desert " 经典配色方案。
-"set background=dark
+colorscheme desert " 经典配色方案。
 
 "同sublime text2
-colorscheme molokai
-set t_Co=256
+"colorscheme molokai
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -144,10 +150,12 @@ endif
 " file encode
 "==========================================
 " 设置新文件的编码为 UTF-8
-"set fileencoding=utf8
+set encoding=utf-8                                  
+set fileencodings=ucs-bom,utf-8,gb2312,big5,latin1
+set helplang=cn
 set enc=2byte-gb18030
+
 " 自动判断编码时，依次尝试以下编码：
-set fileencodings=ucs-bom,utf-8,gb18030,default
 " gb18030 最好在 UTF-8 前面，否则其它编码的文件极可能被误识为 UTF-8
 
 " Use Unix as the standard file type
@@ -157,7 +165,6 @@ set ffs=unix,dos,mac
 set formatoptions+=m
 " 合并两行中文时，不在中间加空格：
 set formatoptions+=B
-
 
 "==========================================
 "others
@@ -172,12 +179,19 @@ set completeopt=longest,menu
 " 增强模式中的命令行自动完成操作
 set wildmenu
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc
+set wildignore=*.o,*~,*.pyc,*.class
 
 " Python 文件的一般设置，比如不要 tab 等
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
 "自动补全配置
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+"Enable omni completion. (Ctrl-X Ctrl-O)
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType java set omnifunc=javacomplete#Complete
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 
 
 " Return to last edit position when opening files (You want this!)
@@ -200,4 +214,72 @@ set whichwrap+=<,>,h,l
 let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
 "defalut g:pydiction_menu_height == 15
 let g:pydiction_menu_height = 20 
+
+
+"==========================================
+"hot key
+"==========================================
+
+"强迫自己用 hjkl
+"map <Left> <Nop>
+"map <Right> <Nop>
+"map <Up> <Nop>
+"map <Down> <Nop>
+
+"Treat long lines as break lines (useful when moving around in them)
+"se swap之后，同物理行上线直接跳
+map j gj
+map k gk
+
+"Smart way to move between windows 分屏窗口移动
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Remap VIM 0 to first non-blank character
+map 0 ^
+
+" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+"nmap <M-j> mz:m+<cr>`z
+"nmap <M-k> mz:m-2<cr>`z
+"vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+"vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+set pastetoggle=<F6>            " when in insert mode, press <F2> to go to
+                                "    paste mode, where you can paste mass data
+                                "    that won't be autoindented
+
+" Speed up scrolling of the viewport slightly
+nnoremap <C-e> 2<C-e>
+nnoremap <C-y> 2<C-y>
+
+
+""为方便复制，用<F2>开启/关闭行号显示:
+nnoremap <F1> :set nonumber!<CR>:set foldcolumn=0<CR>
+nnoremap <F2> :set list!<CR>:set foldcolumn=0<CR>
+nnoremap <F3> :set wrap!<CR>:set foldcolumn=0<CR>
+nnoremap <F4> :syn off!<CR>:set foldcolumn=0<CR>
+nnoremap <F5> :syn on!<CR>:set foldcolumn=0<CR>
+
+
+" easy file saving
+"map <C-s> :w<CR>
+
+"括号匹配 目前不生效
+"vnoremap $1 <esc>`>a)<esc>`<i(<esc>
+"vnoremap $2 <esc>`>a]<esc>`<i[<esc>
+"vnoremap $3 <esc>`>a}<esc>`<i{<esc>
+"vnoremap $$ <esc>`>a"<esc>`<i"<esc>
+"vnoremap $q <esc>`>a'<esc>`<i'<esc>
+"vnoremap $e <esc>`>a"<esc>`<i"<esc>
+""非常好用的括号匹配，实际是自动生成括号
+"实现便利和兼容的折中
+"inoremap $1 ()<esc>i
+"inoremap $2 []<esc>i
+"inoremap $3 {}<esc>i
+"inoremap $4 {<esc>o}<esc>O
+"inoremap $q ''<esc>i
+"inoremap $e ""<esc>i
+"inoremap $t <><esc>i
 
