@@ -212,6 +212,9 @@ goto(){ [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
 mvtmp(){
   mv $1 ~/tmp/
 }
+
 function cptmp(){
   cp -r $1 ~/tmp/
 }
+
+#need to add more useful functions
