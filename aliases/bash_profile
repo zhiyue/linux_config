@@ -4,6 +4,17 @@
 #bash_profile
 unset USERNAME
 
+
+#use bash_completion
+#rpm -ivh http://www.caliban.org/files/redhat/RPMS/noarch/bash-completion-20060301-1.noarch.rpm
+if [ "$PS1" ]
+then
+    if [ -r /etc/bash_completion ]
+    then
+        . /etc/bash_completion
+    fi
+fi
+
 # Gimme a huge history
 #export HISTSIZE=50000
 # Don't store duplicate lines in history
@@ -55,9 +66,12 @@ do
   fi
 done
 
-# svn command auto completion
-if [ -f ~/.bash_svn_completion ]; then
-    . ~/.bash_svn_completion
-fi
-
+#all completion
+ALIASES=`\ls ~/.*completion`
+for f in $ALIASES
+do
+  if [ -f $f ];then
+     . $f
+  fi
+done
 
