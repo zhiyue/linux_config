@@ -3,9 +3,13 @@ cd .
 
 CF_DIR=`pwd`
 
-#bash
+#.bash_profile
 ln -sf $CF_DIR/aliases/bash_profile ~/.bash_profile
 
+#dir_colors
+ln -sf $ALIASES_DIR/dir_colors ~/.dir_colors
+
+#alias
 ALIASES_DIR="$CF_DIR/aliases"
 ALIASES_FILES=`ls $ALIASES_DIR/*aliases`
 for f in $ALIASES_FILES
@@ -14,7 +18,14 @@ do
     ln -sf $f ~/"."$F_NAME
 done
 
-ln -sf $ALIASES_DIR/dir_colors ~/.dir_colors
+#completion
+COMPLETION_DIR="$CF_DIR/completions"
+ALIASES_FILES=`ls $COMPLETION_DIR/*completion`
+for f in $ALIASES_FILES
+do
+    F_NAME=`basename $f`
+    ln -sf $f ~/"."$F_NAME
+done
 
 #vim config
 ln -sf $CF_DIR/vim ~/.vim
@@ -24,8 +35,6 @@ then
 fi
 ln -sf $CF_DIR/vim/vimrc ~/.vimrc
 
-#svn
-ln -sf $ALIASES_DIR/bash_svn_completion ~/.bash_svn_completion
 
 #bin
 ln -sf $CF_DIR/bin ~/bin
