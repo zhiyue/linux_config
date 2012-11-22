@@ -6,8 +6,6 @@ CF_DIR=`pwd`
 #.bash_profile
 ln -sf $CF_DIR/aliases/bash_profile ~/.bash_profile
 
-#dir_colors
-ln -sf $ALIASES_DIR/dir_colors ~/.dir_colors
 
 #alias
 ALIASES_DIR="$CF_DIR/aliases"
@@ -17,6 +15,9 @@ do
     F_NAME=`basename $f`
     ln -sf $f ~/"."$F_NAME
 done
+
+#dir_colors
+ln -sf $ALIASES_DIR/dir_colors ~/.dir_colors
 
 #completion
 COMPLETION_DIR="$CF_DIR/completions"
