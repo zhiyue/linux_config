@@ -12,6 +12,8 @@ then
     if [ -r /etc/bash_completion ]
     then
         . /etc/bash_completion
+    else
+        echo "NEED TO CONFIG bash-completion!!!"
     fi
 fi
 
