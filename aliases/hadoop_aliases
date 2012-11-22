@@ -1,8 +1,4 @@
 #!/bin/bash
-export HADOOP_HOME=/home/tscadmin/hadoop/current
-export HADOOP_ROOT=/home/tscadmin/hadoop/current
-
-export HIVE_HOME=/home/tscadmin/hive/bin
 
 #hadoop
 alias hls='hadoop dfs -ls'

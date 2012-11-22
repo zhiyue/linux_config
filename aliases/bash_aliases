@@ -3,12 +3,15 @@
 #extend old
 alias vi="vim"
 alias grep="grep -rnE --color"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
 alias mkdir="mkdir -pv"
 alias cp='cp -v'
 alias cpr='cp -r'
 alias mv='mv -v'
 alias chmod='chmod -v --preserve-root'
 alias chown='chown -v --preserve-root'
+alias chgrp='chgrp -v --preserve-root'
 alias df="df -h"
 alias du="du -h"
 alias last="last -a"
@@ -40,6 +43,7 @@ alias m='mysql -u root'    #mysql
 alias sv="sudo vim"      #用sudo编辑文件时
 alias vd='vimdiff'  #vim diff两个文件
 alias tf='tail -f'  #动态查看文件变化
+alias t100='tail -n 100'
 alias af="awk -F '\t' '{print NF}'"   #查看文件列数，用\t分隔，最常用，其实也可以搞个通用的，接收参数
 alias wl='wc -l'    #统计行数
 alias hpwd='echo -n "`hostname`:";eval pwd'  #用scp时，展示hostname和pwd
@@ -54,6 +58,7 @@ alias lx='ls -lhBX --color=auto'        #sort by extension
 alias lz='ls -lhrS --color=auto'        #sort by size
 alias lt='ls -lhrt --color=auto'        #sort by date    最常用到，ls -rt，按修改时间查看目录下文件
 alias lsd='find . -maxdepth 1 -type d | sort'   #列出所有目录
+alias sl='ls'
 
 export OS=`uname`
 if [ $OS = "Linux" ]; then
@@ -68,8 +73,8 @@ alias ffind='find -type f -name'  #查找文件
 alias chux='chmod u+x'    #该权限
 alias psg='ps aux|grep'   #查看
 
+
 #svn operation
-alias bk="~/bin/back_up.py -i"    #use my backup script to backup a file/dir
 alias rmsvn='find . -name ".svn" -exec rm -rf {} \; >> /dev/null 2>&1'  #递归删除目录下所有.svn
 alias svnci='svn ci -m "commit by $USER" '   #便捷操作，适用一些不重要文件的，不建议适用哈
 alias svnst='svn st'    #少一个空格，少一个是一个......囧
@@ -82,7 +87,6 @@ alias bk="~/bin/back_up.py -i"    #use my backup script to backup a file/dir
 alias reload='source ~/.bashrc'
 alias bashrc='vim ~/.bashrc && source ~/.bashrc'
 alias bashpr='vim ~/.bash_profile && source ~/.bash_profile'
-alias bashal='vim ~/.alias && source ~/.alias'
 
 #make a trash for linux
 mkdir -p ~/.trash
@@ -218,3 +222,14 @@ function cptmp(){
 }
 
 #need to add more useful functions
+#alias h?="history | grep "
+
+## Command prompt
+#PS1="\[$text_blue\]\u@\h: \w\[$reset\]\[$bold_blue\]>\[$reset\] "
+# grep for a process
+function psg {
+  FIRST=`echo $1 | sed -e 's/^\(.\).*/\1/'`
+  REST=`echo $1 | sed -e 's/^.\(.*\)/\1/'`
+  ps aux | grep "[$FIRST]$REST"
+}
+#alias download="wget -c -t0"
