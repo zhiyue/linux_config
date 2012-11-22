@@ -80,7 +80,7 @@ set foldenable
 " syntax    使用语法定义折叠
 " diff      对没有更改的文本进行折叠
 " marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
-set foldmethod=syntax
+set foldmethod=manual
 " 在左侧显示折叠的层次
 "set foldcolumn=4
 
@@ -186,12 +186,12 @@ autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
 "自动补全配置
 "Enable omni completion. (Ctrl-X Ctrl-O)
 "autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType java set omnifunc=javacomplete#Complete
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+"autocmd FileType java set omnifunc=javacomplete#Complete
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 
 
 " Return to last edit position when opening files (You want this!)
@@ -286,6 +286,7 @@ nnoremap <F5> :syn on!<CR>:set foldcolumn=0<CR>
 
 
 "for taglist + ctag
+let Tlist_Ctags_Cmd="/usr/bin/ctags" 
 nnoremap <silent> <F8> :TlistToggle<CR>
 " taglist
 let Tlist_Auto_Highlight_Tag = 1 
