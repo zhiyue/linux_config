@@ -152,8 +152,8 @@ endif
 " 设置新文件的编码为 UTF-8
 set encoding=utf-8                                  
 set fileencodings=ucs-bom,utf-8,gb2312,big5,latin1
-set helplang=cn
-set enc=2byte-gb18030
+"set helplang=cn
+"set enc=2byte-gb18030
 
 " 自动判断编码时，依次尝试以下编码：
 " gb18030 最好在 UTF-8 前面，否则其它编码的文件极可能被误识为 UTF-8
@@ -286,6 +286,7 @@ nnoremap <F5> :syn on!<CR>:set foldcolumn=0<CR>
 
 
 "for taglist + ctag
+"notice: need to install catgs first
 let Tlist_Ctags_Cmd="/usr/bin/ctags" 
 nnoremap <silent> <F8> :TlistToggle<CR>
 " taglist
@@ -309,6 +310,6 @@ let Tlist_Show_Menu = 0
 let Tlist_Show_One_File = 1 
 let Tlist_Sort_Type = "order"
 let Tlist_Use_Horiz_Window = 0 
-let Tlist_Use_Right_Window = 1 
+let Tlist_Use_Right_Window = 0 
 let Tlist_WinWidth = 35  
 "let tlist_php_settings = 'php;c:class;i:interfaces;d:constant;f:function'

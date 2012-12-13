@@ -59,7 +59,6 @@
 " Line continuation used here
 let s:cpo_save = &cpo
 set cpo&vim
-let Tlist_Ctags_Cmd="/usr/bin/ctags"
 
 if !exists('loaded_taglist')
     " First time loading the taglist plugin
