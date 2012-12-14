@@ -80,7 +80,8 @@ set foldenable
 " syntax    使用语法定义折叠
 " diff      对没有更改的文本进行折叠
 " marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
-set foldmethod=manual
+set foldmethod=indent
+set foldlevel=99
 " 在左侧显示折叠的层次
 "set foldcolumn=4
 
@@ -260,7 +261,7 @@ nnoremap <F1> :set nonumber!<CR>:set foldcolumn=0<CR>
 nnoremap <F2> :set list!<CR>:set foldcolumn=0<CR>
 nnoremap <F3> :set wrap!<CR>:set foldcolumn=0<CR>
 nnoremap <F4> :syn off!<CR>:set foldcolumn=0<CR>
-nnoremap <F5> :syn on!<CR>:set foldcolumn=0<CR>
+"nnoremap <F5> :syn on!<CR>:set foldcolumn=0<CR>
 
 
 " easy file saving
@@ -327,5 +328,74 @@ call vundle#rc()
 
 " 使用Vundle来管理Vundle，这个必须要有。
 Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-git'
+Bundle 'reinh/vim-makegreen'
+
+Bundle 'tpope/vim-fugitive'
+"目前未生效
+Bundle 'msanders/snipmate.vim'
+Bundle 'ervandew/supertab'
+" :b1 :b2在tab之间跳转
+Bundle 'sontek/minibufexpl.vim'
+" ctrl + t   need ruby support
+Bundle 'wincent/Command-T'
+Bundle 'mitechie/pyflakes-pathogen'
+" nedd ack support,不能使用，需调整
+Bundle 'mileszs/ack.vim'
+" 编辑时，保留历史版本，可以回滚回历史
+Bundle 'sjl/gundo.vim'
+Bundle 'fs111/pydoc.vim'
+" need to install pep8
+Bundle 'vim-scripts/pep8'
+" test, 目前无法使用
+Bundle 'alfredodeza/pytest.vim'
+Bundle 'vim-scripts/TaskList.vim'
+Bundle 'vim-scripts/The-NERD-tree'
+" go to the definition
+Bundle 'sontek/rope-vim'
+
+let mapleader = ','
+
+" shortcut for plugin
+" tasklist
+"map <C-t> <Plug>TaskList
+map <leader>td <Plug>TaskList
+
+" default F<F5>,  change it  <F7>检查pep8
+let g:pep8_map='<leader>8'
+
+
+"auto completion  ctrl+p to match
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
+
+" close the window for quick fix, 否则pep8 和pyflakes冲突
+let g:pyflakes_use_quickfix = 0
 
 filetype plugin indent on
+
+" revision history, reverse to old version,仅在编辑时有效，保存后进入无效
+map <leader>g :GundoToggle<CR>
+
+" file browser.          , + n open the browser window
+map <leader>n :NERDTreeToggle<CR>
+
+" refactoring and go to the definition
+map <leader>j :RopeGotoDefinition<CR>
+map <leader>r :RopeRename<CR>
+
+" searching
+map <leader>a <ESC>:Ack!
+
+
+" py.test
+" Execute the tests
+nmap <silent><Leader>tf <Esc>:Pytest file<CR>
+nmap <silent><Leader>tc <Esc>:Pytest class<CR>
+nmap <silent><Leader>tm <Esc>:Pytest method<CR>
+" cycle through test errors
+nmap <silent><Leader>tn <Esc>:Pytest next<CR>
+nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
+nmap <silent><Leader>te <Esc>:Pytest error<CR>
