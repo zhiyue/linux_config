@@ -2,3 +2,13 @@
 #Need to git clone vundle first
 
 git clone https://github.com/gmarik/vundle.git
+
+
+# 在存放配置文件的主文件夹下，添加一个 submodule
+git submodule add https://github.com/gmarik/vundle.git .vim/bundle/vundle
+ 
+# 用类似的办法添加多个插件后，以后升级插件只需：
+git submodule update
+ 
+# 如果其它电脑 checkout 出配置文件后，要先：
+git submodule init
