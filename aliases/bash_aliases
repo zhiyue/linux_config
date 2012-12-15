@@ -2,6 +2,7 @@
 
 #extend old
 alias vi="vim"
+alias edit="vim"
 alias grep="grep -rnE --color"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
@@ -17,6 +18,8 @@ alias du="du -h"
 alias last="last -a"
 alias free='free -m'
 alias lftp="lftp user:pwd@ftpip"
+#install colordiff
+alias diff='colordiff'
 #alias ln='ln -s'
 
 #chdir
@@ -26,6 +29,8 @@ alias cd..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
 alias -- -='cd -'
 
 alias cds='echo "`pwd`" > ~/.cdsave'  #cd save : save where i am
@@ -34,6 +39,8 @@ alias cdb='cd "`cat ~/.cdsave`"'  # cd back
 
 #short cut
 alias s='sudo'   #sudo时
+alias apt-get='sudo apt-get'
+alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 
 alias gu='iconv -f gbk -t utf-8'  #两种类型编码转换
 alias ug='iconv -f utf-8 -t gbk'
@@ -68,12 +75,17 @@ else
 fi
 
 alias pong='ping -c 5 '   #ping，限制
+alias ports='netstat -tulanp'
 alias dfind='find -type d -name'  #查找文件夹
 alias ffind='find -type f -name'  #查找文件
 alias chux='chmod u+x'    #该权限
 alias psg='ps aux|grep'   #查看
+alias meminfo='free -m -l -t'
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4'
 
 alias rmpyc='find . -name "*.pyc" -exec rm -rf {} \; >> /dev/null 2>&1'  #递归删除目录下所有pyc
+alias now='date +"%Y-%m-%d %T"'
 
 #svn operation
 alias rmsvn='find . -name ".svn" -exec rm -rf {} \; >> /dev/null 2>&1'  #递归删除目录下所有.svn
