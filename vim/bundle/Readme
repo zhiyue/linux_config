@@ -1,1 +1,4 @@
-Need to git clone vundle first
+#!/bin/bash
+#Need to git clone vundle first
+
+git clone https://github.com/gmarik/vundle.git
