@@ -241,54 +241,71 @@ map <C-l> <C-W>l
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-"nmap <M-j> mz:m+<cr>`z
-"nmap <M-k> mz:m-2<cr>`z
-"vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-"vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-set pastetoggle=<F6>            " when in insert mode, press <F2> to go to
-                                "    paste mode, where you can paste mass data
-                                "    that won't be autoindented
-
 " Speed up scrolling of the viewport slightly
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
 
-
 ""为方便复制，用<F2>开启/关闭行号显示:
-nnoremap <F1> :set nonumber!<CR>:set foldcolumn=0<CR>
-nnoremap <F2> :set list!<CR>:set foldcolumn=0<CR>
-nnoremap <F3> :set wrap!<CR>:set foldcolumn=0<CR>
-nnoremap <F4> :syn off!<CR>:set foldcolumn=0<CR>
-"nnoremap <F5> :syn on!<CR>:set foldcolumn=0<CR>
+nnoremap <F2> :set nonumber! number?<CR>
+nnoremap <F3> :set list! list?<CR>
+nnoremap <F4> :set wrap! wrap?<CR>
+              "set paste
+set pastetoggle=<F5>            " when in insert mode, press <F2> to go to
+                                "    paste mode, where you can paste mass data
+                                "    that won't be autoindented
+
+nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
 
-" easy file saving
-"map <C-s> :w<CR>
+"==========================================
+"use bundle to manage plugins
+"plugin config begin
+"==========================================
 
-"括号匹配 目前不生效
-"vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-"vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-"vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-"vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-"vnoremap $q <esc>`>a'<esc>`<i'<esc>
-"vnoremap $e <esc>`>a"<esc>`<i"<esc>
-""非常好用的括号匹配，实际是自动生成括号
-"实现便利和兼容的折中
-"inoremap $1 ()<esc>i
-"inoremap $2 []<esc>i
-"inoremap $3 {}<esc>i
-"inoremap $4 {<esc>o}<esc>O
-"inoremap $q ''<esc>i
-"inoremap $e ""<esc>i
-"inoremap $t <><esc>i
+" 0-bundle the plugins
+" vim plugin bundle
+" :BundleInstall  install
+" :BundleInstall! update
+" ::BundleClean   remove plugin not in list
+set nocompatible " be iMproved
+filetype off " required!
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
+" 使用Vundle来管理Vundle
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-git'
+Bundle 'reinh/vim-makegreen'
 
+Bundle 'tpope/vim-fugitive'
+"目前未生效
+Bundle 'msanders/snipmate.vim'
+Bundle 'ervandew/supertab'
+"命令模式下:b1 :b2在tab之间跳转
+Bundle 'sontek/minibufexpl.vim'
+" ctrl + t   need ruby support
+Bundle 'wincent/Command-T'
+" nedd ack support, 替代grep,可以查询
+Bundle 'mileszs/ack.vim'
+" 编辑时，保留历史版本，可以回滚回历史
+Bundle 'sjl/gundo.vim'
+" need to install pep8
+Bundle 'vim-scripts/pep8'
+" test, 目前无法使用
+Bundle 'vim-scripts/TaskList.vim'
+Bundle 'vim-scripts/The-NERD-tree'
+" go to the definition
+Bundle 'sontek/rope-vim'
+Bundle 'mitechie/pyflakes-pathogen'
+" for python
+Bundle 'fs111/pydoc.vim'
+Bundle 'alfredodeza/pytest.vim'
 
-"----------------------------plugin begin--------------------------
-"for taglist + ctag
-"notice: need to install catgs first
+filetype plugin indent on
+
+" 1-for taglist + ctag
+"notice: install catgs
 let Tlist_Ctags_Cmd="/usr/bin/ctags" 
 nnoremap <silent> <F8> :TlistToggle<CR>
 " taglist
@@ -316,81 +333,47 @@ let Tlist_Use_Right_Window = 0
 let Tlist_WinWidth = 25  
 "let tlist_php_settings = 'php;c:class;i:interfaces;d:constant;f:function'
 
-" vim plugin bundle
-" :BundleInstall  install
-" :BundleInstall! update
-" ::BundleClean   remove plugin not in list
-
-set nocompatible " be iMproved
-filetype off " required!
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" 使用Vundle来管理Vundle，这个必须要有。
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-git'
-Bundle 'reinh/vim-makegreen'
-
-Bundle 'tpope/vim-fugitive'
-"目前未生效
-Bundle 'msanders/snipmate.vim'
-Bundle 'ervandew/supertab'
-" :b1 :b2在tab之间跳转
-Bundle 'sontek/minibufexpl.vim'
-" ctrl + t   need ruby support
-Bundle 'wincent/Command-T'
-Bundle 'mitechie/pyflakes-pathogen'
-" nedd ack support,不能使用，需调整
-Bundle 'mileszs/ack.vim'
-" 编辑时，保留历史版本，可以回滚回历史
-Bundle 'sjl/gundo.vim'
-Bundle 'fs111/pydoc.vim'
-" need to install pep8
-Bundle 'vim-scripts/pep8'
-" test, 目前无法使用
-Bundle 'alfredodeza/pytest.vim'
-Bundle 'vim-scripts/TaskList.vim'
-Bundle 'vim-scripts/The-NERD-tree'
-" go to the definition
-Bundle 'sontek/rope-vim'
 
 let mapleader = ','
 
-" shortcut for plugin
-" tasklist
-"map <C-t> <Plug>TaskList
+" 2-tasklist
 map <leader>td <Plug>TaskList
 
-" default F<F5>,  change it  <F7>检查pep8
+" 3-pep8  default F<F5>,  检查pep8
 let g:pep8_map='<leader>8'
 
 
-"auto completion  ctrl+p to match
+" 4-auto completion  ctrl+p to match
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
-" close the window for quick fix, 否则pep8 和pyflakes冲突
+" 5-pyflakes    close the window for quick fix, 否则pep8 和pyflakes冲突
 let g:pyflakes_use_quickfix = 0
 
-filetype plugin indent on
-
-" revision history, reverse to old version,仅在编辑时有效，保存后进入无效
+" 6-gundo revision history, reverse to old version,仅在编辑时有效，保存后进入无效
 map <leader>g :GundoToggle<CR>
 
-" file browser.          , + n open the browser window
+" 7-file browser.    , + n open the browser window.   :b1  :b2 jump between tabs
 map <leader>n :NERDTreeToggle<CR>
 
-" refactoring and go to the definition
+" 8-Rope refactoring and go to the definition
+   " ,+a  选0 ,之后建立project,可使用,j ,r进行操作
+imap <leader><r> <M-/>
+let ropevim_vim_completion=1
+let ropevim_extended_complete=1
+   ",+j 跳转到定义处
 map <leader>j :RopeGotoDefinition<CR>
+   ",+r 变量/函数重命名
 map <leader>r :RopeRename<CR>
+   "查看docs
+map <leader>d :RopeShowDoc<CR>
 
-" searching
+" 9-searching ,目前还未用
 map <leader>a <ESC>:Ack!
 
 
-" py.test
+" 10-py.test
 " Execute the tests
 nmap <silent><Leader>tf <Esc>:Pytest file<CR>
 nmap <silent><Leader>tc <Esc>:Pytest class<CR>
@@ -399,3 +382,31 @@ nmap <silent><Leader>tm <Esc>:Pytest method<CR>
 nmap <silent><Leader>tn <Esc>:Pytest next<CR>
 nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
 nmap <silent><Leader>te <Esc>:Pytest error<CR>
+
+" git
+"%{fugitive#statusline()}
+" easy file saving
+"map <C-s> :w<CR>
+
+"括号匹配 目前不生效
+"vnoremap $1 <esc>`>a)<esc>`<i(<esc>
+"vnoremap $2 <esc>`>a]<esc>`<i[<esc>
+"vnoremap $3 <esc>`>a}<esc>`<i{<esc>
+"vnoremap $$ <esc>`>a"<esc>`<i"<esc>
+"vnoremap $q <esc>`>a'<esc>`<i'<esc>
+"vnoremap $e <esc>`>a"<esc>`<i"<esc>
+""非常好用的括号匹配，实际是自动生成括号
+"实现便利和兼容的折中
+"inoremap $1 ()<esc>i
+"inoremap $2 []<esc>i
+"inoremap $3 {}<esc>i
+"inoremap $4 {<esc>o}<esc>O
+"inoremap $q ''<esc>i
+"inoremap $e ""<esc>i
+"inoremap $t <><esc>i
+
+" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+"nmap <M-j> mz:m+<cr>`z
+"nmap <M-k> mz:m-2<cr>`z
+"vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+"vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z

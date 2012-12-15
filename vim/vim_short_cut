@@ -1,0 +1,23 @@
+vim快捷键说明:
+依赖的插件在vimrc中, 
+:BundleInstall  进行更新安装
+需手动安装包: ctags,pep8,ack
+(基于当前配置)
+
+1.强迫用hjkl进行上下左右   line224附近,可注解掉
+2.ctrl + jkhl 进行上下左右窗口跳转,不需要ctrl+w+jkhl
+3. F2   :se nu
+   F3   :se list
+   F4   :se wrap
+   F5   :se paste
+   F6   :syn on/off
+   以上皆可逆
+4. F8  打开taglist插件
+5. , + td    查看本文件中标注TODO列表
+6. , + 8     python pep8风格检查
+7. , + g     当前编辑文件的历史版本,未保存退出前的
+8. , + n     打开文件目录树
+9. , + j     跳转到函数/变量定义处
+10. , + r    函数/变量重命名
+
+
