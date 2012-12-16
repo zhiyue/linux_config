@@ -291,7 +291,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'msanders/snipmate.vim'
 Bundle 'ervandew/supertab'
 " ctrl + t   need ruby support
-Bundle 'wincent/Command-T'
+"Bundle 'wincent/Command-T'
 " nedd ack support, 替代grep,可以查询
 Bundle 'mileszs/ack.vim'
 " 编辑时，保留历史版本，可以回滚回历史
