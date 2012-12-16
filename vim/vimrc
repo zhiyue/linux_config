@@ -1,12 +1,15 @@
-"config begin
-"impressive : http://amix.dk/vim/vimrc.html
-
+"==========================================
+" Version: 3
+" Author:  wklken
+" Email: wklken@yeah.net
+" Last_modify: 2012-12-16
+"==========================================
 "==========================================
 "General
 "==========================================
 
 " history存储长度。
-set history=1000       
+set history=2000       
 
 " 备份,到另一个位置 ,是否打开???
 set backup
@@ -39,7 +42,7 @@ set noswapfile
 "set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 "- 则点击光标不会换,用于复制
-set mouse-=a           " 在所有的模式下面打开鼠标。
+set mouse-=a           " 鼠标暂不启用
 set selection=exclusive  
 set selectmode=mouse,key
 
@@ -300,6 +303,9 @@ Bundle 'vim-scripts/The-NERD-tree'
   "命令模式下:b1 :b2在tab之间跳转
 Bundle 'sontek/minibufexpl.vim'
 Bundle 'majutsushi/tagbar'
+Bundle 'vim-scripts/winmanager'
+"状态栏增强
+Bundle 'Lokaltog/vim-powerline'
 
 " go to the definition
 Bundle 'sontek/rope-vim'
@@ -310,6 +316,7 @@ Bundle 'fs111/pydoc.vim'
  " test, 目前无法使用
 Bundle 'alfredodeza/pytest.vim'
 Bundle 'mitechie/pyflakes-pathogen'
+Bundle 'vim-scripts/Pydiction'
 
 " 自动匹配闭合 "'({
 "不够强大
@@ -322,8 +329,6 @@ Bundle 'jxiaoyu/closepairs'
 "批量注释   ,+cc对选中多行进行注释    ,+c  解开注释  
 Bundle 'scrooloose/nerdcommenter'
 
-"状态栏增强
-Bundle 'Lokaltog/vim-powerline'
 
 Bundle 'vim-scripts/grep.vim'
 
@@ -371,6 +376,8 @@ let g:pep8_map='<leader>8'
 
 " 4-auto completion  ctrl+p to match
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
@@ -413,7 +420,7 @@ nmap <silent><Leader>te <Esc>:Pytest error<CR>
 nmap <F9> :TagbarToggle<CR>
 "" 11-pydiction , python自动补全
 filetype plugin on
-let g:pydiction_location='~/.vim/pydiction/complete-dict'
+let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
 let g:pydiction_menu_height = 20
 let python_highlight_all=1
 
@@ -433,10 +440,21 @@ let g:Powerline_symbols = 'unicode'
 "13-grep
 nnoremap <silent> <F7> :Grep<CR>
 
-"let g:miniBufExplMapWindowNavVim = 1
-"let g:miniBufExplMapWindowNavArrows = 1
-"let g:miniBufExplMapCTabSwitchBufs = 1
-"let g:miniBufExplModSelTarget = 1
+"14-winmanager
+let g:winManagerWindowLayout='FileExplorer|TagList'
+map <c-w><c-f> :FirstExplorerWindow<cr> 
+map <c-w><c-b> :BottomExplorerWindow<cr> 
+map <c-w><c-t> :WMToggle<cr>
+
+"15-minibuf
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+
+"16-snipmate   Tab键和pydiction冲突
+ino <c-j> <c-r>=TriggerSnippet()<cr>
+snor <c-j> <esc>i<right><c-r>=TriggerSnippet()<cr>
 
 
 " git
@@ -466,3 +484,9 @@ nnoremap <silent> <F7> :Grep<CR>
 "nmap <M-k> mz:m-2<cr>`z
 "vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 "vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+"
+"useful mapping for managing tabs
+"map <leader>tn :tabnew<cr>
+"map <leader>to :tabonly<cr>
+"map <leader>tc :tabclose<cr>
+"map <leader>tm :tabmove

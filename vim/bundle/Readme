@@ -3,6 +3,9 @@
 
 git clone https://github.com/gmarik/vundle.git
 
+然后,打开一个文件
+:BundleInstall,会自动安装所有插件
+
 
 # 在存放配置文件的主文件夹下，添加一个 submodule
 git submodule add https://github.com/gmarik/vundle.git .vim/bundle/vundle
@@ -12,3 +15,6 @@ git submodule update
  
 # 如果其它电脑 checkout 出配置文件后，要先：
 git submodule init
+
+
+

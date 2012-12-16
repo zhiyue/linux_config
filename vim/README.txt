@@ -26,10 +26,16 @@ vim快捷键说明:
 12. :b1 :b2  打开多个文件,存在minibuffer,在命令行执行,用于跳转
 13. F9   打开tagbar插件,   func_name/var_name -> type:function/var
 14. 对于python
-    ctrl + p  或者  直接TAB,可以进行自动补全
+    ctrl + p/ ctrl + n   [使用ominautocomplete]  
+    或者  直接TAB,可以进行自动补全[使用pydiction]
+    或者 ctrl+j  使用snipmate,自动补全片段,这样会快些
     TAB下移, Shift+TAB上移
 15. 目前" ' ( [ {  自动补全后半部分
 16. ,+cc ,+c 对选中多行进行注释,解开注释
+17.  ctrl+wf  第一个窗口
+     ctrl+wb 最后一个窗口
+     ctrl+wt  同时打开文件浏览器+taglist
+18. pyflakes 自动检查代码,要手动执行   :cc
 
 
 1.snipmate,need to extends
@@ -45,4 +51,6 @@ tagbar, need to add
 9. xmledit,对xml的编辑,目前没用到,未尝试
 10. taglist 使用方法
 11. minibuffer的快捷用法
-12. grep.vim 目前装ack,还不会用
+12. grep.vim 目前装ack,还不会用 [目前只简单用法]
+13. nerdtree
+
