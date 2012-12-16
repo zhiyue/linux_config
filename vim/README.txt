@@ -1,7 +1,9 @@
 vim快捷键说明:
 依赖的插件在vimrc中, 
-1.先到vim/bundle下,查看readme,执行第一次clone命令
-2.然后,打开vim,执行
+1.先到vim/bundle下,查看readme,
+  执行第一次clone命令
+  git clone https://github.com/gmarik/vundle.git
+2.然后,vim 打开随便一个文件,执行
   :BundleInstall  进行更新安装
 3.需手动安装包: ctags,pep8,ack
 (基于当前配置)
@@ -39,14 +41,10 @@ vim快捷键说明:
 
 
 1.snipmate,need to extends
-2.
-tagbar, need to add     
-3. commend-t   not use now
+3. commend-t   not use now, del tmp
 4. rope need to learn how to use
-5.  vim-surroun , the cmd is hard to remember
+5. vim-surround, the cmd is hard to remember
 6. minibuf  need to config
-7. [DONE搞定了]autocmd FileType python set omnifunc=pythoncomplete#Complete  
-  python 自动补全 目前未生效,pydiction也不行,原因未知,貌似有冲突
 8. nerdcomment,注释功能,还不是很明白
 9. xmledit,对xml的编辑,目前没用到,未尝试
 10. taglist 使用方法
