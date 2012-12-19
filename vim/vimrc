@@ -11,10 +11,6 @@
 " history存储长度。
 set history=2000       
 
-" 备份,到另一个位置 ,是否打开???
-"set backup
-"set backupext=.bak
-"set backupdir=~/bak/vimbk/
 
 "检测文件类型
 filetype on
@@ -38,7 +34,10 @@ set title
 set nowb
 set noswapfile
 
+" 备份,到另一个位置 ,是否打开???
 "set backup
+"set backupext=.bak
+"set backupdir=~/bak/vimbk/
 "set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 "- 则点击光标不会换,用于复制
@@ -65,7 +64,7 @@ set nowrap                    " 取消换行。
 "括号配对情况
 set showmatch
 " How many tenths of a second to blink when matching brackets
-"set mat=2
+set mat=2
 
 "设置文内智能搜索提示
 " 高亮search命中的文本。
@@ -115,6 +114,7 @@ set showmode
 set so=7
 
 "set cursorline              " 突出显示当前行
+"set nocursorcolumn
 "set winwidth=79
 
 " 命令行（在状态行下）的高度，默认为1，这里是2
@@ -139,10 +139,10 @@ set background=dark
 
 "colorscheme darkblue          " 深蓝色配色方案。
 
-"colorscheme desert " 经典配色方案。
+colorscheme desert " 经典配色方案。
 
 "同sublime text2
-colorscheme molokai
+""colorscheme molokai
 
 
 " Set extra options when running in GUI mode
@@ -445,7 +445,7 @@ let python_highlight_all=1
 "powerline{ 
 set guifont=PowerlineSymbols\ for\ Powerline 
 set nocompatible 
-set t_Co=256 
+"set t_Co=256 
 ""let g:Powerline_symbols = 'fancy' 
 "if want to use fancy,need to add font patch 
 "git clone git://gist.github.com/1630581.git ~/.fonts/ttf-dejavu-powerline
@@ -464,10 +464,10 @@ map <c-w><c-b> :BottomExplorerWindow<cr>
 map <c-w><c-t> :WMToggle<cr>
 
 "15-minibuf
-"let g:miniBufExplMapWindowNavVim = 1
-"let g:miniBufExplMapWindowNavArrows = 1
-"let g:miniBufExplMapCTabSwitchBufs = 1
-"let g:miniBufExplModSelTarget = 1
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
 
 "16-snipmate   Tab键和pydiction冲突
 ino <c-j> <c-r>=TriggerSnippet()<cr>
