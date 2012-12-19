@@ -65,7 +65,7 @@ set nowrap                    " 取消换行。
 "括号配对情况
 set showmatch
 " How many tenths of a second to blink when matching brackets
-set mat=2
+"set mat=2
 
 "设置文内智能搜索提示
 " 高亮search命中的文本。
@@ -183,7 +183,22 @@ autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 l
 
 
 " 自动完成 
+"让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+"set completeopt+=longest
 set completeopt=longest,menu
+ 
+"离开插入模式后自动关闭预览窗口
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+ 
+"回车即选中当前项
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+ 
+"上下左右键的行为 会显示其他信息
+inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
 " 增强模式中的命令行自动完成操作
 set wildmenu
 " Ignore compiled files
@@ -383,6 +398,8 @@ set completeopt=menuone,longest,preview
 
 " 5-pyflakes    close the window for quick fix, 否则pep8 和pyflakes冲突
 let g:pyflakes_use_quickfix = 0
+" 如有需要，可设置忽略部分错误
+let g:flake8_ignore="E501""
 
 " 6-gundo revision history, reverse to old version,仅在编辑时有效，保存后进入无效
 map <leader>h :GundoToggle<CR>
@@ -447,10 +464,10 @@ map <c-w><c-b> :BottomExplorerWindow<cr>
 map <c-w><c-t> :WMToggle<cr>
 
 "15-minibuf
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
+"let g:miniBufExplMapWindowNavVim = 1
+"let g:miniBufExplMapWindowNavArrows = 1
+"let g:miniBufExplMapCTabSwitchBufs = 1
+"let g:miniBufExplModSelTarget = 1
 
 "16-snipmate   Tab键和pydiction冲突
 ino <c-j> <c-r>=TriggerSnippet()<cr>
