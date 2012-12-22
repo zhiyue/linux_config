@@ -95,6 +95,10 @@ alias svnci='svn ci -m "commit by $USER" '   #便捷操作，适用一些不重�
 alias svnst='svn st'    #少一个空格，少一个是一个......囧
 
 
+#for redis
+alias redis='/etc/init.d/redis_6379'
+alias rediscli='redis-cli'
+
 #my own script
 alias bk="~/bin/back_up.py -i"    #use my backup script to backup a file/dir
 
