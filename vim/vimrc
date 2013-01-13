@@ -376,6 +376,8 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/grep.vim'
 
 
+"Go"
+Bundle 'jnwhiteh/vim-golang'
 filetype plugin indent on
 
 " 1-for taglist + ctag
@@ -502,6 +504,11 @@ let g:miniBufExplModSelTarget = 1
 "16-snipmate   Tab键和pydiction冲突
 ino <c-j> <c-r>=TriggerSnippet()<cr>
 snor <c-j> <esc>i<right><c-r>=TriggerSnippet()<cr>
+
+"17-go
+set rtp+=$GOROOT/misc/vim
+filetype plugin indent on
+syntax on
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
