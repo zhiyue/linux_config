@@ -95,8 +95,11 @@ alias svnci='svn ci -m "commit by $USER" '   #便捷操作，适用一些不重�
 alias svnst='svn st'    #少一个空格，少一个是一个......囧
 
 #for go
-alias go='go run'
-alias gob='go bulid'
+alias gor='go run'
+alias gob='go build'
+
+#for nginx
+alias nginx='/etc/init.d/nginx'
 
 #for redis
 alias redis='/etc/init.d/redis_6379'
