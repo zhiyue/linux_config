@@ -375,6 +375,7 @@ Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'vim-scripts/grep.vim'
 
+Bundle 'kien/rainbow_parentheses.vim'
 
 "Go"
 Bundle 'jnwhiteh/vim-golang'
@@ -441,7 +442,7 @@ map <leader>n :NERDTreeToggle<CR>
 
 " 8-Rope refactoring and go to the definition
    " ,+a  选0 ,之后建立project,可使用,j ,r进行操作
-imap <leader><r> <M-/>
+"imap <leader><r> <M-/>
 let ropevim_vim_completion=1
 let ropevim_extended_complete=1
    ",+j 跳转到定义处
@@ -509,6 +510,41 @@ snor <c-j> <esc>i<right><c-r>=TriggerSnippet()<cr>
 set rtp+=$GOROOT/misc/vim
 filetype plugin indent on
 syntax on
+
+"18 -rainbow_parentheses
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+
+":RainbowParenthesesToggle       " Toggle it on/off
+":RainbowParenthesesLoadRound    " (), the default when toggling
+":RainbowParenthesesLoadSquare   " []
+":RainbowParenthesesLoadBraces   " {}
+":RainbowParenthesesLoadChevrons " <>
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+map <leader>r :RainbowParenthesesToggle<cr>
+
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
