@@ -38,7 +38,8 @@ vim快捷键说明:
      ctrl+wb 最后一个窗口
      ctrl+wt  同时打开文件浏览器+taglist
 18. pyflakes 自动检查代码,要手动执行   :cc
-19. , + t commandT，查找文件
+
+19. , + t commandT，查找文件 暂时不能用
 
 vim自带缩进
 插入模式
