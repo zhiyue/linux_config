@@ -261,11 +261,6 @@ set magic
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-"pydiction 1.2 python auto complete
-"let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
-"defalut g:pydiction_menu_height == 15
-"let g:pydiction_menu_height = 20 
-
 
 "==========================================
 "hot key
@@ -359,7 +354,6 @@ Bundle 'fs111/pydoc.vim'
  " test, 目前无法使用
 Bundle 'alfredodeza/pytest.vim'
 Bundle 'mitechie/pyflakes-pathogen'
-""Bundle 'vim-scripts/Pydiction'
 
 " 自动匹配闭合 "'({
 "不够强大
@@ -432,12 +426,13 @@ let g:pep8_map='<leader>8'
 
 
 " 4-auto completion  ctrl+p to match
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+""autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+
 au BufRead,BufNewFile *.go set filetype=go
 let g:SuperTabDefaultCompletionType = "context"
-set completeopt=menuone,longest,preview
+set completeopt=menuone,longest  "",preview
 
 " 5-pyflakes    close the window for quick fix, 否则pep8 和pyflakes冲突
 let g:pyflakes_use_quickfix = 0
@@ -478,11 +473,6 @@ nmap <silent><Leader>te <Esc>:Pytest error<CR>
 
 
 nmap <F9> :TagbarToggle<CR>
-"" 11-pydiction , python自动补全
-""filetype plugin on
-""let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
-""let g:pydiction_menu_height = 20
-""let python_highlight_all=1
 
 " 12-powerline  状态栏增强
 "powerline{ 
@@ -512,7 +502,7 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 
-"16-snipmate   Tab键和pydiction冲突
+"16-snipmate    need to config
 ino <c-j> <c-r>=TriggerSnippet()<cr>
 snor <c-j> <esc>i<right><c-r>=TriggerSnippet()<cr>
 
@@ -567,12 +557,15 @@ au Syntax * RainbowParenthesesLoadBraces
 ""map <leader>r :RainbowParenthesesToggle<cr>
 
 "20 jedi vim for python auto complete" sudo pip install jedi
+""let g:jedi#auto_initialization = 0
+let g:jedi#auto_vim_configuration = 0
 let g:jedi#get_definition_command = "<leader>d"
+let g:jedi#rename_command = "<leader>r"
 let g:jedi#pydoc = "K"
-let g:jedi#use_tabs_not_buffers = 0
+""let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#autocompletion_command = "<C-p>"
 let g:jedi#popup_on_dot = 0
-let g:jedi#show_function_definition = "0"
-let g:jedi#auto_initialization = 0
+let g:jedi#show_function_definition = 0
 
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
