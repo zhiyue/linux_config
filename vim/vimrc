@@ -153,18 +153,6 @@ set laststatus=2
 syntax enable
 syntax on
 
-"配色方案 三种,选一个
-"set t_Co=256
-set background=dark
-
-"colorscheme darkblue          " 深蓝色配色方案。
-
-"colorscheme desert " 经典配色方案。
-
-"同sublime text2
-colorscheme molokai
-
-
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
@@ -172,7 +160,19 @@ if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
 endif
+
 "set guifont=Monaco:h20          " 字体 && 字号  
+"配色方案 三种,选一个
+set background=dark
+
+""colorscheme desert " 经典配色方案。
+
+"同sublime text2
+colorscheme molokai
+
+"colorscheme solarized
+
+
 
 "==========================================
 " file encode
@@ -262,9 +262,9 @@ set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
 "pydiction 1.2 python auto complete
-let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
+"let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
 "defalut g:pydiction_menu_height == 15
-let g:pydiction_menu_height = 20 
+"let g:pydiction_menu_height = 20 
 
 
 "==========================================
@@ -359,7 +359,7 @@ Bundle 'fs111/pydoc.vim'
  " test, 目前无法使用
 Bundle 'alfredodeza/pytest.vim'
 Bundle 'mitechie/pyflakes-pathogen'
-Bundle 'vim-scripts/Pydiction'
+""Bundle 'vim-scripts/Pydiction'
 
 " 自动匹配闭合 "'({
 "不够强大
@@ -376,11 +376,16 @@ Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'abudden/TagHighlight'
 
+" :Matrix ,很好玩的插件
+Bundle 'uguu-org/vim-matrix-screensaver'
 
 Bundle 'vim-scripts/grep.vim'
 
 Bundle 'kien/rainbow_parentheses.vim'
 
+let g:molokai_original = 0
+
+Bundle 'davidhalter/jedi-vim'
 "Go"
 Bundle 'jnwhiteh/vim-golang'
 filetype plugin indent on
@@ -430,6 +435,7 @@ let g:pep8_map='<leader>8'
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+au BufRead,BufNewFile *.go set filetype=go
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
@@ -473,10 +479,10 @@ nmap <silent><Leader>te <Esc>:Pytest error<CR>
 
 nmap <F9> :TagbarToggle<CR>
 "" 11-pydiction , python自动补全
-filetype plugin on
-let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
-let g:pydiction_menu_height = 20
-let python_highlight_all=1
+""filetype plugin on
+""let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
+""let g:pydiction_menu_height = 20
+""let python_highlight_all=1
 
 " 12-powerline  状态栏增强
 "powerline{ 
@@ -538,6 +544,17 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 
+"19 taghighlight" need to find some more beautiful color
+""hi Class                ctermfg=205   cterm=bold
+""hi Structure            ctermfg=205   cterm=bold
+""hi DefinedName          ctermfg=49    cterm=bold
+""hi Member              ctermfg=244
+""hi Label                   ctermfg=21    cterm=bold
+""hi EnumerationName      ctermfg=19
+""hi EnumerationValue     ctermfg=57
+""hi LocalVariable        ctermfg=100
+""hi GlobalVariable       ctermfg=93
+
 ":RainbowParenthesesToggle       " Toggle it on/off
 ":RainbowParenthesesLoadRound    " (), the default when toggling
 ":RainbowParenthesesLoadSquare   " []
@@ -548,6 +565,14 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 ""map <leader>r :RainbowParenthesesToggle<cr>
+
+"20 jedi vim for python auto complete" sudo pip install jedi
+let g:jedi#get_definition_command = "<leader>d"
+let g:jedi#pydoc = "K"
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_function_definition = "0"
+let g:jedi#auto_initialization = 0
 
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
@@ -620,4 +645,3 @@ func! DeleteTrailingWS()
   exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
-

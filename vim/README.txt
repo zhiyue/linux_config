@@ -143,3 +143,16 @@ Vim版本需要支持ruby扩展。我们可以在Vim中输入:ruby 1检查，如
 如果出现上述情况，我们就需要自己去编译能够支持ruby的Vim，嫌麻烦的话可以直接安装vim-nox，自带Ruby支持，在Ubuntu下安装命令如下：sudo apt-get install vim-nox。
 
 执行ruby extconf.rb命令时如果出现找不到mkmf包的情况，说明你需要安装ruby-dev的包，在Ubuntu下安装命令如下：sudo apt-get install ruby1.8-dev。
+
+对于数字
+ctrl+a  递增增加
+ctrl+x  递减
+编程时很好用的做法
+
+--------
+1.Conque shell研究下
+2.snipmate.vim 收集需要用的
+3.syntax 加入一些常用的
+4.xmledit.vim
+5.syntaxstic
+6.project.vim
