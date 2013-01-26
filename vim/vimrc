@@ -368,7 +368,10 @@ Bundle 'underlog/ClosePairs'
 Bundle 'scrooloose/nerdcommenter'
 
 
-Bundle 'abudden/TagHighlight'
+""Bundle 'abudden/TagHighlight'
+""Bundle 'magic-dot-files/TagHighlight'
+Bundle 'zhm/TagHighlight'
+
 
 " :Matrix ,很好玩的插件
 Bundle 'uguu-org/vim-matrix-screensaver'
