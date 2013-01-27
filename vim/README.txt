@@ -178,3 +178,12 @@ aC CSelect a class. Ex: vaC, daC, dC, yaC, yC, caC, cC (normal, operator modes)
 iCSelect inner class. Ex: viC, diC, yiC, ciC (normal, operator modes)
 aM MSelect a function or method. Ex: vaM, daM, dM, yaM, yM, caCM, cM (normal, operator modes)
 iMSelect inner function or method. Ex:  viM, diM, yiM, ciM (normal, operator modes)
+
+
+other plugins
+python_editing
+neocomplcache + clang_complete + neocomplcache_clange
+easymotion
+sparkup
+tcomment
+PeepOpen

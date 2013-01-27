@@ -319,7 +319,9 @@ Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-fugitive'
 
 "目前未生效
-Bundle 'msanders/snipmate.vim'
+"废弃Bundle 'msanders/snipmate.vim'
+
+Bundle 'vim-scripts/UltiSnips'
 Bundle 'ervandew/supertab'
 " ctrl + t   need ruby support
 Bundle 'wincent/Command-T'
@@ -560,7 +562,10 @@ au Syntax * RainbowParenthesesLoadBraces
 ""let g:jedi#auto_initialization = 0
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#get_definition_command = "<leader>d"
-let g:jedi#rename_command = "<leader>r"
+"let g:jedi#rename_command = "<leader>r"
+let g:jedi#goto_command = "<leader>g"
+let g:jedi#rename_command = ""  "r
+let g:jedi#related_names_command = ""  "n
 let g:jedi#pydoc = "K"
 ""let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#autocompletion_command = "<C-p>"
@@ -685,6 +690,14 @@ let g:pymode_rope_guess_project = 1
 let g:pymode_rope_goto_def_newwin = ""
 let g:pymode_rope_always_show_complete_menu = 0
 
+
+"ultisnips  https://github.com/graudeejs/dot.vim/tree/master/snippets
+"http://www.ruchee.com/code/linux/vim/snippets/python.snippets.shtml
+"https://github.com/honza/snipmate-snippets/blob/master/snippets/python.snippets
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsSnippetDirectories = ["snippets"]
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
