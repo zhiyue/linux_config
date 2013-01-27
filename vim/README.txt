@@ -156,3 +156,25 @@ ctrl+x  递减
 4.xmledit.vim
 5.syntaxstic
 6.project.vim
+
+
+
+For python-mode
+Also you can see vim help :help PythonModeKeys
+
+KeysCommand
+KShow python docs (g:pymode_doc enabled)
+<C-Space>Rope autocomplete (g:pymode_rope enabled)
+<C-c>gRope goto definition (g:pymode_rope   enabled)
+<C-c>dRope show documentation (g:pymode_rope enabled)
+<C-c>ForRope find occurrences (g:pymode_rope enabled)
+<Leader>rRun python (g:pythonymode_run enabled)
+<Leader>bSet, unset breakpoint (g:pymode_breakpoint enabled)
+[[Jump on previous class or function (normal, visual, operator modes)
+]]Jump on next class or function (normal, visual, operator modesodes)
+[MJump on previous class or method (normal, visual, operator modesodeses)
+]MJump on next class or method (normal, visual, operator modes)
+aC CSelect a class. Ex: vaC, daC, dC, yaC, yC, caC, cC (normal, operator modes)
+iCSelect inner class. Ex: viC, diC, yiC, ciC (normal, operator modes)
+aM MSelect a function or method. Ex: vaM, daM, dM, yaM, yM, caCM, cM (normal, operator modes)
+iMSelect inner function or method. Ex:  viM, diM, yiM, ciM (normal, operator modes)
