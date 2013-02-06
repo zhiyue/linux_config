@@ -339,6 +339,7 @@ Bundle 'vim-scripts/The-NERD-tree'
 Bundle 'sontek/minibufexpl.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'vim-scripts/winmanager'
+Bundle 'vim-scripts/bufkill.vim'
 
 "状态栏增强
 Bundle 'Lokaltog/vim-powerline'
@@ -489,7 +490,9 @@ let g:Powerline_symbols = 'unicode'
 nnoremap <silent> <F7> :Grep<CR>
 set cursorcolumn
 set cursorline              " 突出显示当前行
-hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE guibg=black guifg=NONE
+""hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
+""hi Cursorcolumn cterm=NONE ctermbg=black ctermfg=NONE
+""hi CursorLine cterm=NONE ctermbg=darkgray ctermfg=NONE guibg=black guifg=NONE
 
 "14-winmanager
 let g:winManagerWindowLayout='FileExplorer|TagList'
@@ -502,6 +505,7 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
+let g:miniBufExplUseSingleClick = 0
 
 "16-snipmate    need to config
 ino <c-j> <c-r>=TriggerSnippet()<cr>
@@ -699,9 +703,50 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsSnippetDirectories = ["snippets"]
 
+"http://www.vimbits.com/bits?page=2&sort=top"
+"
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
 "map <c-space> ?"
+
+map Y y$
+cmap w!! %!sudo tee > /dev/null %
+noremap <silent><leader>/ :nohls<CR>
+
+inoremap kj <Esc>
+" I can type :help on my own, thanks.
+noremap <F1> <Esc>"
+
+"Use sane regexes"
+nnoremap / /\v
+vnoremap / /\v
+
+"Keep search pattern at the center of the screen."
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
+"Use arrow key to change buffer"
+noremap <left> :bp<CR>
+noremap <right> :bn<CR>
+
+""Jump to start and end of line using the home row keys
+
+""
+nmap t o<ESC>k
+nmap T O<ESC>j
+
+" Go to home and end using capitalized directions
+noremap H ^
+noremap L $
+
+" select all
+" map <Leader>a ggVG"
+
+" automatically reload vimrc when it's saved
+au BufWritePost .vimrc so ~/.vimrc'"
 
 
 " Close the current buffer
