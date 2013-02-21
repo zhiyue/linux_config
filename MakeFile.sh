@@ -44,3 +44,8 @@ if [ ! -d ~/tmp ]
 then
     mkdir ~/tmp
 fi
+
+if [ ! -d ~/bak/vimbk ]
+then
+    mkdir -p ~/bak/vimbk
+fi

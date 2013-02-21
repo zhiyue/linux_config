@@ -5,6 +5,10 @@ linux_config
 
 My linux config file. .bash_profile .alias bin .vimrc etc.
 
+- 建议安装包
+  bash-completion
+  tmux
+
 - LINUX:
 一键配置，直接执行
 sh -x MakeFile.sh
