@@ -2,5 +2,5 @@
 CODE=`ps -ef | grep goagent/local/proxy.py | grep -v grep | awk '{print $2}'`
 if [ -z $CODE ]
 then
-    /usr/bin/python /home/ken/Dropbox/software/goagent/local/proxy.py >/dev/null 2>&1  &
+    /usr/bin/python ~/Dropbox/software/goagent/local/proxy.py >/dev/null 2>&1  &
 fi
