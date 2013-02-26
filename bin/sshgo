@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ $1 == 197 ]
+then
+    U=""  #user
+    I=""  #ip
+    P="22" #port, default 22
+    PWD="" #password
+fi
+
+expect ~/bin/login.exp $U $I $P $PWD
+
