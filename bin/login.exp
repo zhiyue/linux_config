@@ -4,14 +4,12 @@ set ipaddress [lindex $argv 1]
 set port [lindex $argv 2]
 set passwd [lindex $argv 3]
 set timeout 30
-spawn ssh -p $port $user@$ipaddress
-expect "*ssword:*"
+spawn ssh -o StrictHostKeyChecking=no -p $port $user@$ipaddress
 
-send "$passwd\r"
 #expect eof
-#expect {
-#    "yes/no" { send "yes\r";exp_continue }
-#    "*assword:*" { send "$passwd\r" }
-#}
-#expect "*from*"
+#expect_after eof { exit 0 }
+#expect "yes/no" { send "yes\r"; exp_continue }
+expect "*ssword:*" { send "$passwd\r" }
+#expect "#"
+
 interact
