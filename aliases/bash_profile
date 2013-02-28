@@ -32,7 +32,7 @@ PROMPT_COMMAND="$PROMPT_COMMAND;history -a; history -n"
 
 
 # local variables
-export PATH=/bin:/sbin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/local/git/bin:/bin
+export PATH=/bin:/sbin:/usr/sbin:/usr/bin:/usr/local/bin:~/bin
 export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib
 
 #export JAVA_HOME=/home/tscadmin/java/current
@@ -42,6 +42,9 @@ export CLASSPATH=$HADOOP_HOME/lib:$JAVA_HOME/lib:$JRE_HOME/lib
 
 export PATH=$PATH:$HADOOP_HOME/bin:$JAVA_HOME/bin:$JRE_HOME/bin:$HIVE_HOME
 export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/WebGameStore:/home/ken/KuaiwanBackend/GameInfo:/home/ken/KuaiwanBackend/KuaiWanBox:/home/ken/KuaiwanBackend/GamePlay
+export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/WebGameStore/KwSearch
+export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/IpLocator
+export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/GameStore
 
 #设置了Ls的目录颜色
 export HOSTSHORT=`hostname`
@@ -57,6 +60,8 @@ export SVN_EDITOR=vim
 
 #shell promaote and title.
 PROMPT_COMMAND='echo -ne "\033]0;[${HOSTSHORT}:`basename $PWD`\$]${PWD}\007"'
+#PS1='[\u@\h:${YROOT_NAME}\w\$] '
+PS1='[\u@\w\$] '
 
 #.bashrc
 if [ -f /etc/bashrc ]; then 
@@ -83,11 +88,11 @@ done
 
 
 #need to install linuxlogo, sudo apt-get install linuxlogo
-#LOGO_EXIST=`which linuxlogo`
-#if [ -n $LOGO_EXIST ]
-#then
-#    linuxlogo -L ubuntu -a
-#fi
+LOGO_EXIST=`which linuxlogo`
+if [ -n $LOGO_EXIST ]
+then
+    linuxlogo -L ubuntu -a
+fi
 #screenfetch
 
 ##
@@ -98,14 +103,6 @@ done
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
 
-
-##
-# Your previous /Users/ken/.bash_profile file was backed up as /Users/ken/.bash_profile.macports-saved_2013-02-21_at_01:01:36
-##
-
-# MacPorts Installer addition on 2013-02-21_at_01:01:36: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
