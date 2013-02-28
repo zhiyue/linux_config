@@ -369,6 +369,9 @@ Bundle 'zhm/TagHighlight'
 " :Matrix ,很好玩的插件
 Bundle 'uguu-org/vim-matrix-screensaver'
 
+" move"
+Bundle 'Lokaltog/vim-easymotion'
+
 
 "Python"
 Bundle 'davidhalter/jedi-vim'
@@ -803,4 +806,7 @@ highlight clear SpellRare
 highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
+
+" , , w    jump between word use easy motion
+" , , fa   find all a use easy motion
 
