@@ -27,7 +27,7 @@
 "set guifont=Monaco:h20          " 字体 && 字号  
 "配色方案
 set background=dark
-""colorscheme desert " 经典配色方案。
+"colorscheme desert " 经典配色方案。
 "colorscheme solarized
 "同sublime text2
 colorscheme molokai
@@ -191,7 +191,7 @@ autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 l
 
 
 
-" 自动完成 
+" 自动补全配置
 "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
 "set completeopt+=longest
 set completeopt=longest,menu
@@ -226,14 +226,6 @@ autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
 "autocmd FileType java set omnifunc=javacomplete#Complete
 "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 
-
-" Return to last edit position when opening files (You want this!)
-" if has("")
-""autocmd BufReadPost *
-""     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-""     \   exe "normal! g`\"" |
-""     \ endif
-
 " if this not work ,make sure .viminfo is writable for you
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -251,11 +243,299 @@ set magic
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
+let mapleader = ','
+let g:mapleader = ','
+
 
 "==========================================
-"hot key
+"use bundle to manage plugins
+"plugin config begin
 "==========================================
 
+" 0-bundle the plugins
+" vim plugin bundle
+" :BundleInstall  install
+" :BundleInstall! update
+" ::BundleClean   remove plugin not in list
+set nocompatible " be iMproved
+
+filetype off " required! turn off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+"D 使用Vundle来管理Vundle
+Bundle 'gmarik/vundle'
+"D 代码片段
+Bundle 'vim-scripts/UltiSnips'
+"D 状态栏增强
+Bundle 'Lokaltog/vim-powerline'
+"D 括号显示增强
+Bundle 'kien/rainbow_parentheses.vim'
+"D 更高效的移动  W/fx
+Bundle 'Lokaltog/vim-easymotion'
+
+"D for golang
+Bundle 'jnwhiteh/vim-golang'
+
+"D file browser
+Bundle 'vim-scripts/The-NERD-tree'
+
+"D tag browser
+Bundle 'majutsushi/tagbar'
+
+"D super tab
+Bundle 'ervandew/supertab'
+
+"D task list
+Bundle 'vim-scripts/TaskList.vim'
+
+"D edit history   同类Undotree
+Bundle 'sjl/gundo.vim'
+
+"D nerdcommenter
+Bundle 'scrooloose/nerdcommenter'
+
+"D surround
+Bundle 'tpope/vim-surround'
+
+"D for git 尚未用起来
+Bundle 'tpope/vim-fugitive'
+
+"D for python check
+Bundle 'mitechie/pyflakes-pathogen'
+Bundle 'vim-scripts/pep8'
+
+"D 自动补全单引号，双引号等 Bundle 'underlog/ClosePairs'
+Bundle 'Raimondi/delimitMate'
+
+
+"N :Matrix ,很好玩的插件 用处貌似不大，好玩而已
+"Bundle 'uguu-org/vim-matrix-screensaver'
+
+""" 靠谱，但未完全掌握============================
+"""同类， 考量哪个好Raimondi/delimitMate
+
+
+""" 尚未决定保留，考察中=========================================================
+""" Git,  need git support
+""Bundle 'tpope/vim-git'
+
+""" ctrl + t   need ruby support """ 1  对ruby有依赖
+""Bundle 'wincent/Command-T'
+
+""" nedd ack support, 替代grep,可以查询
+""Bundle 'mileszs/ack.vim'
+
+""Bundle 'vim-scripts/grep.vim'
+
+"""导航相关
+""  "命令模式下:b1 :b2在tab之间跳转
+""Bundle 'sontek/minibufexpl.vim'
+"""BufExplorer + 1
+"""1 + 1 + 1
+""Bundle 'vim-scripts/winmanager'
+""Bundle 'vim-scripts/bufkill.vim'
+
+"""状态栏增强
+""" go to the definition
+"""Bundle 'sontek/rope-vim'
+""" for python
+"" " need to install pep8
+""""Bundle 'fs111/pydoc.vim'
+"" " test, 目前无法使用
+""Bundle 'alfredodeza/pytest.vim'
+
+""""Solarized Colorscheme
+"""Python"
+""""neocomplcache"
+""Bundle 'davidhalter/jedi-vim'
+""Bundle 'klen/python-mode'
+
+"补全"
+"omnicppcomplete
+"clang
+
+"others"
+"docunext/closetag.vim  自动比和html
+"Conque Shell + 1
+"markdown – syntax highlight for Markdown
+"syntastic – checks for syntax errors in many languages
+"vim-jade – Vim syntax highlighting for the Jade templating engine
+"vim-preview – [leader] P previews Markdown, Rdoc, Textile, html. Requires
+"Ruby and other gems.
+"Tabular（非常方便的排版工具）
+"Tabularize
+
+" end turn on"
+filetype plugin indent on
+
+"========================== config for plugins begin ======================================
+
+" 1 Ultisnips
+"ultisnips  https://github.com/graudeejs/dot.vim/tree/master/snippets
+"http://www.ruchee.com/code/linux/vim/snippets/python.snippets.shtml
+"https://github.com/honza/snipmate-snippets/blob/master/snippets/python.snippets
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+
+" 2-powerline  状态栏增强
+"if want to use fancy,need to add font patch -> git clone git://gist.github.com/1630581.git ~/.fonts/ttf-dejavu-powerline
+"let g:Powerline_symbols = 'fancy' 
+let g:Powerline_symbols = 'unicode'
+
+" 3 -rainbow_parentheses
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+" 4 - the nerdtree 
+map <leader>n :NERDTreeToggle<CR>
+
+" 5 - tagbar
+nmap <F9> :TagbarToggle<CR>
+
+" 6 - supertab
+let g:SuperTabDefaultCompletionType = "context"
+
+" 7 - tasklist
+map <leader>td <Plug>TaskList
+
+" 8 - gundo
+map <leader>h :GundoToggle<CR>
+
+" 9 - pyflakes
+let g:pyflakes_use_quickfix = 0
+
+" 10 -pep8 check
+let g:pep8_map='<leader>8'
+
+
+"" 11 -for taglist + ctag
+""notice: install catgs
+set tags=tags;/
+let Tlist_Ctags_Cmd="/usr/bin/ctags" 
+nnoremap <silent> <F8> :TlistToggle<CR>
+" taglist
+let Tlist_Auto_Highlight_Tag = 1 
+let Tlist_Auto_Open = 0 
+let Tlist_Auto_Update = 1 
+let Tlist_Close_On_Select = 0 
+let Tlist_Compact_Format = 0 
+let Tlist_Display_Prototype = 0 
+let Tlist_Display_Tag_Scope = 1 
+let Tlist_Enable_Fold_Column = 0 
+let Tlist_Exit_OnlyWindow = 1 
+let Tlist_File_Fold_Auto_Close = 0 
+let Tlist_GainFocus_On_ToggleOpen = 1 
+let Tlist_Hightlight_Tag_On_BufEnter = 1 
+let Tlist_Inc_Winwidth = 0 
+let Tlist_Max_Submenu_Items = 1 
+let Tlist_Max_Tag_Length = 30
+let Tlist_Process_File_Always = 0 
+let Tlist_Show_Menu = 0 
+let Tlist_Show_One_File = 1 
+let Tlist_Sort_Type = "order"
+let Tlist_Use_Horiz_Window = 0 
+let Tlist_Use_Right_Window = 1 
+let Tlist_WinWidth = 25  
+
+
+"" 4-auto completion  ctrl+p to match
+"""autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+"
+"au BufRead,BufNewFile *.go set filetype=go
+"set completeopt=menuone,longest  "",preview
+"
+"" 如有需要，可设置忽略部分错误
+"
+"" 6-gundo revision history, reverse to old version,仅在编辑时有效，保存后进入无效
+"
+"" 7-file browser.    , + n open the browser window.   :b1  :b2 jump between tabs
+"
+"" 8-Rope refactoring and go to the definition
+"   " ,+a  选0 ,之后建立project,可使用,j ,r进行操作
+""imap <leader><r> <M-/>
+"""let ropevim_vim_completion=1
+"""let ropevim_extended_complete=1
+"""   ",+j 跳转到定义处
+"""map <leader>j :RopeGotoDefinition<CR>
+"""   ",+r 变量/函数重命名
+"""map <leader>r :RopeRename<CR>
+"""   "查看docs
+"""map <leader>d :RopeShowDoc<CR>
+"
+"" 9-searching ,目前还未用
+"map <leader>a <ESC>:Ack!
+"
+"
+"" 10-py.test
+"" Execute the tests
+"nmap <silent><Leader>tf <Esc>:Pytest file<CR>
+"nmap <silent><Leader>tc <Esc>:Pytest class<CR>
+"nmap <silent><Leader>tm <Esc>:Pytest method<CR>
+"" cycle through test errors
+"nmap <silent><Leader>tn <Esc>:Pytest next<CR>
+"nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
+"nmap <silent><Leader>te <Esc>:Pytest error<CR>
+"
+""13-grep
+"nnoremap <silent> <F7> :Grep<CR>
+"set cursorcolumn
+"set cursorline              " 突出显示当前行
+"""hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
+"""hi Cursorcolumn cterm=NONE ctermbg=black ctermfg=NONE
+"""hi CursorLine cterm=NONE ctermbg=darkgray ctermfg=NONE guibg=black guifg=NONE
+"
+""14-winmanager
+"let g:winManagerWindowLayout='FileExplorer|TagList'
+"map <c-w><c-f> :FirstExplorerWindow<cr> 
+"map <c-w><c-b> :BottomExplorerWindow<cr> 
+"map <c-w><c-t> :WMToggle<cr>
+"
+""15-minibuf
+"let g:miniBufExplMapWindowNavVim = 1
+"let g:miniBufExplMapWindowNavArrows = 1
+"let g:miniBufExplMapCTabSwitchBufs = 1
+"let g:miniBufExplModSelTarget = 1
+"let g:miniBufExplUseSingleClick = 0
+"
+
+""17-go
+"set rtp+=$GOROOT/misc/vim
+""filetype plugin indent on
+
+
+"http://www.vimbits.com/bits?page=2&sort=top"
+
+
+"==========================================
+"hot key  自定义快捷键
+"==========================================
 "强迫自己用 hjkl
 map <Left> <Nop>
 map <Right> <Nop>
@@ -292,422 +572,6 @@ set pastetoggle=<F5>            " when in insert mode, press <F2> to go to
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
 
-"==========================================
-"use bundle to manage plugins
-"plugin config begin
-"==========================================
-
-" 0-bundle the plugins
-" vim plugin bundle
-" :BundleInstall  install
-" :BundleInstall! update
-" ::BundleClean   remove plugin not in list
-set nocompatible " be iMproved
-
-filetype off " required! turn off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" 使用Vundle来管理Vundle
-Bundle 'gmarik/vundle'
-
-Bundle 'tpope/vim-surround'
-Bundle 'reinh/vim-makegreen'
-
-" Git,  need git support
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-fugitive'
-
-"目前未生效
-"废弃Bundle 'msanders/snipmate.vim'
-
-Bundle 'vim-scripts/UltiSnips'
-Bundle 'ervandew/supertab'
-" ctrl + t   need ruby support
-Bundle 'wincent/Command-T'
-" nedd ack support, 替代grep,可以查询
-Bundle 'mileszs/ack.vim'
-Bundle 'vim-scripts/grep.vim'
-" 编辑时，保留历史版本，可以回滚回历史
-Bundle 'sjl/gundo.vim'
-
-Bundle 'vim-scripts/TaskList.vim'
-
-"导航相关
-Bundle 'vim-scripts/The-NERD-tree'
-  "命令模式下:b1 :b2在tab之间跳转
-Bundle 'sontek/minibufexpl.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'vim-scripts/winmanager'
-Bundle 'vim-scripts/bufkill.vim'
-
-"状态栏增强
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'kien/rainbow_parentheses.vim'
-
-" go to the definition
-"Bundle 'sontek/rope-vim'
-" for python
- " need to install pep8
-""Bundle 'fs111/pydoc.vim'
- " test, 目前无法使用
-Bundle 'alfredodeza/pytest.vim'
-
-" 自动匹配闭合 "'({
-"使用他人修改版
-"Bundle 'jxiaoyu/closepairs'
-Bundle 'underlog/ClosePairs'
-
-"批量注释   ,+cc对选中多行进行注释    ,+c  解开注释  
-Bundle 'scrooloose/nerdcommenter'
-
-""Bundle 'abudden/TagHighlight'
-""Bundle 'magic-dot-files/TagHighlight'
-Bundle 'zhm/TagHighlight'
-
-
-" :Matrix ,很好玩的插件
-Bundle 'uguu-org/vim-matrix-screensaver'
-
-" move"
-Bundle 'Lokaltog/vim-easymotion'
-
-
-"Python"
-Bundle 'davidhalter/jedi-vim'
-Bundle 'mitechie/pyflakes-pathogen'
-Bundle 'klen/python-mode'
-Bundle 'vim-scripts/pep8'
-
-"Go"
-Bundle 'jnwhiteh/vim-golang'
-
-" end turn on"
-filetype plugin indent on
-
-" 1-for taglist + ctag
-"notice: install catgs
-set tags=tags;/
-let Tlist_Ctags_Cmd="/usr/bin/ctags" 
-nnoremap <silent> <F8> :TlistToggle<CR>
-" taglist
-let Tlist_Auto_Highlight_Tag = 1 
-let Tlist_Auto_Open = 0 
-let Tlist_Auto_Update = 1 
-let Tlist_Close_On_Select = 0 
-let Tlist_Compact_Format = 0 
-let Tlist_Display_Prototype = 0 
-let Tlist_Display_Tag_Scope = 1 
-let Tlist_Enable_Fold_Column = 0 
-let Tlist_Exit_OnlyWindow = 1 
-let Tlist_File_Fold_Auto_Close = 0 
-let Tlist_GainFocus_On_ToggleOpen = 1 
-let Tlist_Hightlight_Tag_On_BufEnter = 1 
-let Tlist_Inc_Winwidth = 0 
-let Tlist_Max_Submenu_Items = 1 
-let Tlist_Max_Tag_Length = 30
-let Tlist_Process_File_Always = 0 
-let Tlist_Show_Menu = 0 
-let Tlist_Show_One_File = 1 
-let Tlist_Sort_Type = "order"
-let Tlist_Use_Horiz_Window = 0 
-let Tlist_Use_Right_Window = 1 
-let Tlist_WinWidth = 25  
-"let tlist_php_settings = 'php;c:class;i:interfaces;d:constant;f:function'
-
-
-let mapleader = ','
-let g:mapleader = ','
-
-" 2-tasklist
-map <leader>td <Plug>TaskList
-
-" 3-pep8  default F<F5>,  检查pep8
-let g:pep8_map='<leader>8'
-
-
-
-" 4-auto completion  ctrl+p to match
-""autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-
-au BufRead,BufNewFile *.go set filetype=go
-let g:SuperTabDefaultCompletionType = "context"
-set completeopt=menuone,longest  "",preview
-
-" 5-pyflakes    close the window for quick fix, 否则pep8 和pyflakes冲突
-let g:pyflakes_use_quickfix = 0
-" 如有需要，可设置忽略部分错误
-let g:flake8_ignore="E501""
-
-" 6-gundo revision history, reverse to old version,仅在编辑时有效，保存后进入无效
-map <leader>h :GundoToggle<CR>
-
-" 7-file browser.    , + n open the browser window.   :b1  :b2 jump between tabs
-map <leader>n :NERDTreeToggle<CR>
-
-" 8-Rope refactoring and go to the definition
-   " ,+a  选0 ,之后建立project,可使用,j ,r进行操作
-"imap <leader><r> <M-/>
-""let ropevim_vim_completion=1
-""let ropevim_extended_complete=1
-""   ",+j 跳转到定义处
-""map <leader>j :RopeGotoDefinition<CR>
-""   ",+r 变量/函数重命名
-""map <leader>r :RopeRename<CR>
-""   "查看docs
-""map <leader>d :RopeShowDoc<CR>
-
-" 9-searching ,目前还未用
-map <leader>a <ESC>:Ack!
-
-
-" 10-py.test
-" Execute the tests
-nmap <silent><Leader>tf <Esc>:Pytest file<CR>
-nmap <silent><Leader>tc <Esc>:Pytest class<CR>
-nmap <silent><Leader>tm <Esc>:Pytest method<CR>
-" cycle through test errors
-nmap <silent><Leader>tn <Esc>:Pytest next<CR>
-nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
-nmap <silent><Leader>te <Esc>:Pytest error<CR>
-
-
-nmap <F9> :TagbarToggle<CR>
-
-" 12-powerline  状态栏增强
-"powerline{ 
-set guifont=PowerlineSymbols\ for\ Powerline 
-set nocompatible 
-set t_Co=256 
-""let g:Powerline_symbols = 'fancy' 
-"if want to use fancy,need to add font patch 
-"git clone git://gist.github.com/1630581.git ~/.fonts/ttf-dejavu-powerline
-let g:Powerline_symbols = 'unicode'
-""let g:Powerline_colorscheme = 'skwp'
-"}
-
-
-"13-grep
-nnoremap <silent> <F7> :Grep<CR>
-set cursorcolumn
-set cursorline              " 突出显示当前行
-""hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
-""hi Cursorcolumn cterm=NONE ctermbg=black ctermfg=NONE
-""hi CursorLine cterm=NONE ctermbg=darkgray ctermfg=NONE guibg=black guifg=NONE
-
-"14-winmanager
-let g:winManagerWindowLayout='FileExplorer|TagList'
-map <c-w><c-f> :FirstExplorerWindow<cr> 
-map <c-w><c-b> :BottomExplorerWindow<cr> 
-map <c-w><c-t> :WMToggle<cr>
-
-"15-minibuf
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-let g:miniBufExplUseSingleClick = 0
-
-"16-snipmate    need to config
-ino <c-j> <c-r>=TriggerSnippet()<cr>
-snor <c-j> <esc>i<right><c-r>=TriggerSnippet()<cr>
-
-"17-go
-set rtp+=$GOROOT/misc/vim
-"filetype plugin indent on
-""syntax on
-
-
-"18 -rainbow_parentheses
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-
-"19 taghighlight" need to find some more beautiful color
-""hi Class                ctermfg=205   cterm=bold
-""hi Structure            ctermfg=205   cterm=bold
-""hi DefinedName          ctermfg=49    cterm=bold
-""hi Member              ctermfg=244
-""hi Label                   ctermfg=21    cterm=bold
-""hi EnumerationName      ctermfg=19
-""hi EnumerationValue     ctermfg=57
-""hi LocalVariable        ctermfg=100
-""hi GlobalVariable       ctermfg=93
-
-":RainbowParenthesesToggle       " Toggle it on/off
-":RainbowParenthesesLoadRound    " (), the default when toggling
-":RainbowParenthesesLoadSquare   " []
-":RainbowParenthesesLoadBraces   " {}
-":RainbowParenthesesLoadChevrons " <>
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-""map <leader>r :RainbowParenthesesToggle<cr>
-
-"20 jedi vim for python auto complete" sudo pip install jedi
-""let g:jedi#auto_initialization = 0
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#get_definition_command = "<leader>d"
-"let g:jedi#rename_command = "<leader>r"
-let g:jedi#goto_command = "<leader>g"
-let g:jedi#rename_command = ""  "r
-let g:jedi#related_names_command = ""  "n
-let g:jedi#pydoc = "K"
-""let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#autocompletion_command = "<C-p>"
-let g:jedi#popup_on_dot = 0
-let g:jedi#show_function_definition = 0
-
-" 21  python-mode
-" Disable pylint checking every save"
-let g:pymode_lint_write = 0
-" Set key 'R' for run python code
-"let g:pymode_run_key = 'R'
-"" Load show documentation plugin
-let g:pymode_doc = 1
-" Key for show python documentation
-let g:pymode_doc_key = 'K'
-" Load run code plugin
-let g:pymode_run = 1
-" Key for run python code
-let g:pymode_run_key = '<leader>r'
-
-" code check 
-" Load pylint code plugin
-let g:pymode_lint = 1
-" Switch pylint, pyflakes, pep8, mccabe code-checkers
-" Can have multiply values "pep8,pyflakes,mcccabe"
-let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
-" Skip errors and warnings
-" E.g. "E501,W002", "E2,W" (Skip all Warnings and Errors startswith E2) and etc
-let g:pymode_lint_ignore = "E501"
-" Select errors and warnings
-" E.g. "E4,W"
-let g:pymode_lint_select = ""
-" Run linter on the fly
-let g:pymode_lint_onfly = 0
-" Pylint configuration file
-" If file not found use 'pylintrc' from python-mode plugin directory
-let g:pymode_lint_config = "$HOME/.pylintrc"
-
-" Check code every save
-"let g:pymode_lint_write = 1
-" Auto open cwindow if errors be finded
-let g:pymode_lint_cwindow = 1
-" Show error message if cursor placed at the error line
-let g:pymode_lint_message = 1
-" Auto jump on first error
-let g:pymode_lint_jump = 0
-" Hold cursor in current window
-" when quickfix is open
-let g:pymode_lint_hold = 0
-" Place error signs
-let g:pymode_lint_signs = 1
-" Maximum allowed mccabe complexity
-let g:pymode_lint_mccabe_complexity = 8
-" Minimal height of pylint error window
-let g:pymode_lint_minheight = 3
-" Maximal height of pylint error window
-let g:pymode_lint_maxheight = 6
-
-" Enable pymode's custom syntax highlighting
-let g:pymode_syntax = 1
-
-" Enable all python highlightings
-let g:pymode_syntax_all = 1
-" Highlight "print" as function
-let g:pymode_syntax_print_as_function = 0
-" Highlight indentation errors
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-" Highlight trailing spaces
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-" Highlight string formatting
-let g:pymode_syntax_string_formatting = g:pymode_syntax_all
-" Highlight str.format syntax
-let g:pymode_syntax_string_format = g:pymode_syntax_all
-" Highlight string.Template syntax
-let g:pymode_syntax_string_templates = g:pymode_syntax_all
-" Highlight doc-tests
-let g:pymode_syntax_doctests = g:pymode_syntax_all
-" Highlight builtin objects (__doc__, self, etc)
-let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
-" Highlight builtin functions
-let g:pymode_syntax_builtin_funcs = g:pymode_syntax_all
-" Highlight exceptions
-let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
-" For fast machines
-let g:pymode_syntax_slow_sync = 0
-
-" other stuff"
-" Additional python paths
-let g:pymode_paths = []
-" Load breakpoints plugin
-let g:pymode_breakpoint = 1
-" Key for set/unset breakpoint
-let g:pymode_breakpoint_key = '<leader>b'
-" Autoremove unused whitespaces
-let g:pymode_utils_whitespaces = 1
-" Enable pymode indentation
-let g:pymode_indent = 1
-" Set default pymode python options
-let g:pymode_options = 1
-" Enable python folding
-let g:pymode_folding = 1
-
-" rope
-" Load rope plugin
-let g:pymode_rope = 1
-" Auto create and open ropeproject
-let g:pymode_rope_auto_project = 1
-" Enable autoimport
-let g:pymode_rope_enable_autoimport = 1
-" Auto generate global cache
-let g:pymode_rope_autoimport_generate = 1
-let g:pymode_rope_autoimport_underlineds = 0
-let g:pymode_rope_codeassist_maxfixes = 10
-let g:pymode_rope_sorted_completions = 1
-let g:pymode_rope_extended_complete = 1
-let g:pymode_rope_autoimport_modules = ["os","shutil","datetime"]
-let g:pymode_rope_confirm_saving = 1
-let g:pymode_rope_global_prefix = "<C-x>p"
-let g:pymode_rope_local_prefix = "<C-c>r"
-let g:pymode_rope_vim_completion = 1
-let g:pymode_rope_guess_project = 1
-let g:pymode_rope_goto_def_newwin = ""
-let g:pymode_rope_always_show_complete_menu = 0
-
-
-"ultisnips  https://github.com/graudeejs/dot.vim/tree/master/snippets
-"http://www.ruchee.com/code/linux/vim/snippets/python.snippets.shtml
-"https://github.com/honza/snipmate-snippets/blob/master/snippets/python.snippets
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsSnippetDirectories = ["snippets"]
-
-"http://www.vimbits.com/bits?page=2&sort=top"
-"
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
 "map <c-space> ?"
@@ -757,27 +621,9 @@ map <leader>bd :Bclose<cr>
 " " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
 
-
-" git
-"%{fugitive#statusline()}
-" easy file saving
-"map <C-s> :w<CR>
-
-
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-"nmap <M-j> mz:m+<cr>`z
-"nmap <M-k> mz:m-2<cr>`z
-"vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-"vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-"
-"useful mapping for managing tabs
-"map <leader>tn :tabnew<cr>
-"map <leader>to :tabonly<cr>
-"map <leader>tc :tabclose<cr>
-"map <leader>tm :tabmove
+set t_Co=256 
 
 "不知道有没有用的.....><
-
 "Don't redraw while executing macros(Good performace config)
 set lazyredraw
 """"""""""""""""""""""""""""""
@@ -797,7 +643,7 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 
-" for error highlight
+" for error highlight，防止错误整行标红导致看不清
 highlight clear SpellBad
 highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
 highlight clear SpellCap
@@ -807,6 +653,6 @@ highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
-" , , w    jump between word use easy motion
-" , , fa   find all a use easy motion
 
+"set guifont=PowerlineSymbols\ for\ Powerline 
+"set nocompatible 

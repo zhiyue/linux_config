@@ -1,0 +1,36 @@
+
+easymotion
+,,w 快速单词跳转
+,,fx 快速查找字符x
+
+thenerdtree
+,n 打开树形目录结构
+
+tagbar
+<F9> 打开标签列表
+
+tasklist
+,td 打开TODO列表
+
+gundo
+,h 打开文件编辑历史列表
+
+nerdcommenter
+,cc   单行注释
+,cu   解开注释
+https://github.com/scrooloose/nerdcommenter
+
+surround
+cs"' [inside]
+"Hello world!" -> 'Hello world!'
+ds"
+"Hello world!" -> Hello world
+ysiw"
+Hello world -> "Hello world!"
+
+fugitive
+https://github.com/tpope/vim-fugitive
+
+pep8
+,8   check the py file
+
