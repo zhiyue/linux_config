@@ -1,9 +1,9 @@
 "==========================================
 " Author:  wklken
-" Version: 3
+" Version: 5
 " Email: wklken@yeah.net
-" BlogPost:
-" ReadMe:
+" BlogPost: http://blog.csdn.net/wklken/article/details/8044678
+" ReadMe: README.md
 " Last_modify: 2012-12-16
 " Sections:
 "     ->General
@@ -19,7 +19,7 @@
 "     ->Others
 "参考:http://amix.dk/vim/vimrc.html
 "==========================================
-"
+
 "==========================================
 "General
 "==========================================
@@ -27,12 +27,12 @@
 "set guifont=Monaco:h20          " 字体 && 字号  
 "配色方案
 set background=dark
-"colorscheme desert " 经典配色方案。
+
+"colorscheme desert 
 "colorscheme solarized
 "同sublime text2
 colorscheme molokai
 let g:molokai_original = 0
-
 
 " history存储长度。
 set history=2000       
@@ -56,11 +56,15 @@ set backup
 set backupext=.bak
 set backupdir=~/bak/vimbk/
 
-set title
-
 " 取消备份。
 set nowb
 set noswapfile
+
+set title
+
+" 突出显示当前行等
+set cursorcolumn
+set cursorline              " 突出显示当前行
 
 "设置 退出vim后，内容显示在终端屏幕
 "好处：误删什么的，如果以前屏幕打开，可以找回
@@ -161,7 +165,7 @@ if has("gui_running")
     set guitablabel=%M\ %t
 endif
 
-
+set t_Co=256 
 
 "==========================================
 " file encode
@@ -188,7 +192,6 @@ set formatoptions+=B
 "==========================================
 autocmd! bufwritepost _vimrc source % " vimrc文件修改之后自动加载。 windows。
 autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 linux。
-
 
 
 " 自动补全配置
@@ -231,6 +234,25 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+"删除多余空格
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+
+" for error highlight，防止错误整行标红导致看不清
+highlight clear SpellBad
+highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+highlight clear SpellCap
+highlight SpellCap term=underline cterm=underline
+highlight clear SpellRare
+highlight SpellRare term=underline cterm=underline
+highlight clear SpellLocal
+highlight SpellLocal term=underline cterm=underline
+
 " Remember info about open buffers on close"
 set viminfo^=%
 " A buffer becomes hidden when it is abandoned
@@ -243,299 +265,13 @@ set magic
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
+"==========================================
+"hot key  自定义快捷键
+"==========================================
 let mapleader = ','
 let g:mapleader = ','
 
 
-"==========================================
-"use bundle to manage plugins
-"plugin config begin
-"==========================================
-
-" 0-bundle the plugins
-" vim plugin bundle
-" :BundleInstall  install
-" :BundleInstall! update
-" ::BundleClean   remove plugin not in list
-set nocompatible " be iMproved
-
-filetype off " required! turn off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-"D 使用Vundle来管理Vundle
-Bundle 'gmarik/vundle'
-"D 代码片段
-Bundle 'vim-scripts/UltiSnips'
-"D 状态栏增强
-Bundle 'Lokaltog/vim-powerline'
-"D 括号显示增强
-Bundle 'kien/rainbow_parentheses.vim'
-"D 更高效的移动  W/fx
-Bundle 'Lokaltog/vim-easymotion'
-
-"D for golang
-Bundle 'jnwhiteh/vim-golang'
-
-"D file browser
-Bundle 'vim-scripts/The-NERD-tree'
-
-"D tag browser
-Bundle 'majutsushi/tagbar'
-
-"D super tab
-Bundle 'ervandew/supertab'
-
-"D task list
-Bundle 'vim-scripts/TaskList.vim'
-
-"D edit history   同类Undotree
-Bundle 'sjl/gundo.vim'
-
-"D nerdcommenter
-Bundle 'scrooloose/nerdcommenter'
-
-"D surround
-Bundle 'tpope/vim-surround'
-
-"D for git 尚未用起来
-Bundle 'tpope/vim-fugitive'
-
-"D for python check
-Bundle 'mitechie/pyflakes-pathogen'
-Bundle 'vim-scripts/pep8'
-
-"D 自动补全单引号，双引号等 Bundle 'underlog/ClosePairs'
-Bundle 'Raimondi/delimitMate'
-
-
-"N :Matrix ,很好玩的插件 用处貌似不大，好玩而已
-"Bundle 'uguu-org/vim-matrix-screensaver'
-
-""" 靠谱，但未完全掌握============================
-"""同类， 考量哪个好Raimondi/delimitMate
-
-
-""" 尚未决定保留，考察中=========================================================
-""" Git,  need git support
-""Bundle 'tpope/vim-git'
-
-""" ctrl + t   need ruby support """ 1  对ruby有依赖
-""Bundle 'wincent/Command-T'
-
-""" nedd ack support, 替代grep,可以查询
-""Bundle 'mileszs/ack.vim'
-
-""Bundle 'vim-scripts/grep.vim'
-
-"""导航相关
-""  "命令模式下:b1 :b2在tab之间跳转
-""Bundle 'sontek/minibufexpl.vim'
-"""BufExplorer + 1
-"""1 + 1 + 1
-""Bundle 'vim-scripts/winmanager'
-""Bundle 'vim-scripts/bufkill.vim'
-
-"""状态栏增强
-""" go to the definition
-"""Bundle 'sontek/rope-vim'
-""" for python
-"" " need to install pep8
-""""Bundle 'fs111/pydoc.vim'
-"" " test, 目前无法使用
-""Bundle 'alfredodeza/pytest.vim'
-
-""""Solarized Colorscheme
-"""Python"
-""""neocomplcache"
-""Bundle 'davidhalter/jedi-vim'
-""Bundle 'klen/python-mode'
-
-"补全"
-"omnicppcomplete
-"clang
-
-"others"
-"docunext/closetag.vim  自动比和html
-"Conque Shell + 1
-"markdown – syntax highlight for Markdown
-"syntastic – checks for syntax errors in many languages
-"vim-jade – Vim syntax highlighting for the Jade templating engine
-"vim-preview – [leader] P previews Markdown, Rdoc, Textile, html. Requires
-"Ruby and other gems.
-"Tabular（非常方便的排版工具）
-"Tabularize
-
-" end turn on"
-filetype plugin indent on
-
-"========================== config for plugins begin ======================================
-
-" 1 Ultisnips
-"ultisnips  https://github.com/graudeejs/dot.vim/tree/master/snippets
-"http://www.ruchee.com/code/linux/vim/snippets/python.snippets.shtml
-"https://github.com/honza/snipmate-snippets/blob/master/snippets/python.snippets
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-
-" 2-powerline  状态栏增强
-"if want to use fancy,need to add font patch -> git clone git://gist.github.com/1630581.git ~/.fonts/ttf-dejavu-powerline
-"let g:Powerline_symbols = 'fancy' 
-let g:Powerline_symbols = 'unicode'
-
-" 3 -rainbow_parentheses
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-" 4 - the nerdtree 
-map <leader>n :NERDTreeToggle<CR>
-
-" 5 - tagbar
-nmap <F9> :TagbarToggle<CR>
-
-" 6 - supertab
-let g:SuperTabDefaultCompletionType = "context"
-
-" 7 - tasklist
-map <leader>td <Plug>TaskList
-
-" 8 - gundo
-map <leader>h :GundoToggle<CR>
-
-" 9 - pyflakes
-let g:pyflakes_use_quickfix = 0
-
-" 10 -pep8 check
-let g:pep8_map='<leader>8'
-
-
-"" 11 -for taglist + ctag
-""notice: install catgs
-set tags=tags;/
-let Tlist_Ctags_Cmd="/usr/bin/ctags" 
-nnoremap <silent> <F8> :TlistToggle<CR>
-" taglist
-let Tlist_Auto_Highlight_Tag = 1 
-let Tlist_Auto_Open = 0 
-let Tlist_Auto_Update = 1 
-let Tlist_Close_On_Select = 0 
-let Tlist_Compact_Format = 0 
-let Tlist_Display_Prototype = 0 
-let Tlist_Display_Tag_Scope = 1 
-let Tlist_Enable_Fold_Column = 0 
-let Tlist_Exit_OnlyWindow = 1 
-let Tlist_File_Fold_Auto_Close = 0 
-let Tlist_GainFocus_On_ToggleOpen = 1 
-let Tlist_Hightlight_Tag_On_BufEnter = 1 
-let Tlist_Inc_Winwidth = 0 
-let Tlist_Max_Submenu_Items = 1 
-let Tlist_Max_Tag_Length = 30
-let Tlist_Process_File_Always = 0 
-let Tlist_Show_Menu = 0 
-let Tlist_Show_One_File = 1 
-let Tlist_Sort_Type = "order"
-let Tlist_Use_Horiz_Window = 0 
-let Tlist_Use_Right_Window = 1 
-let Tlist_WinWidth = 25  
-
-
-"" 4-auto completion  ctrl+p to match
-"""autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-"
-"au BufRead,BufNewFile *.go set filetype=go
-"set completeopt=menuone,longest  "",preview
-"
-"" 如有需要，可设置忽略部分错误
-"
-"" 6-gundo revision history, reverse to old version,仅在编辑时有效，保存后进入无效
-"
-"" 7-file browser.    , + n open the browser window.   :b1  :b2 jump between tabs
-"
-"" 8-Rope refactoring and go to the definition
-"   " ,+a  选0 ,之后建立project,可使用,j ,r进行操作
-""imap <leader><r> <M-/>
-"""let ropevim_vim_completion=1
-"""let ropevim_extended_complete=1
-"""   ",+j 跳转到定义处
-"""map <leader>j :RopeGotoDefinition<CR>
-"""   ",+r 变量/函数重命名
-"""map <leader>r :RopeRename<CR>
-"""   "查看docs
-"""map <leader>d :RopeShowDoc<CR>
-"
-"" 9-searching ,目前还未用
-"map <leader>a <ESC>:Ack!
-"
-"
-"" 10-py.test
-"" Execute the tests
-"nmap <silent><Leader>tf <Esc>:Pytest file<CR>
-"nmap <silent><Leader>tc <Esc>:Pytest class<CR>
-"nmap <silent><Leader>tm <Esc>:Pytest method<CR>
-"" cycle through test errors
-"nmap <silent><Leader>tn <Esc>:Pytest next<CR>
-"nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
-"nmap <silent><Leader>te <Esc>:Pytest error<CR>
-"
-""13-grep
-"nnoremap <silent> <F7> :Grep<CR>
-"set cursorcolumn
-"set cursorline              " 突出显示当前行
-"""hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
-"""hi Cursorcolumn cterm=NONE ctermbg=black ctermfg=NONE
-"""hi CursorLine cterm=NONE ctermbg=darkgray ctermfg=NONE guibg=black guifg=NONE
-"
-""14-winmanager
-"let g:winManagerWindowLayout='FileExplorer|TagList'
-"map <c-w><c-f> :FirstExplorerWindow<cr> 
-"map <c-w><c-b> :BottomExplorerWindow<cr> 
-"map <c-w><c-t> :WMToggle<cr>
-"
-""15-minibuf
-"let g:miniBufExplMapWindowNavVim = 1
-"let g:miniBufExplMapWindowNavArrows = 1
-"let g:miniBufExplMapCTabSwitchBufs = 1
-"let g:miniBufExplModSelTarget = 1
-"let g:miniBufExplUseSingleClick = 0
-"
-
-""17-go
-"set rtp+=$GOROOT/misc/vim
-""filetype plugin indent on
-
-
-"http://www.vimbits.com/bits?page=2&sort=top"
-
-
-"==========================================
-"hot key  自定义快捷键
-"==========================================
 "强迫自己用 hjkl
 map <Left> <Nop>
 map <Right> <Nop>
@@ -610,49 +346,285 @@ noremap H ^
 noremap L $
 
 " select all
-" map <Leader>a ggVG"
+map <Leader>a ggVG"
 
 " automatically reload vimrc when it's saved
 au BufWritePost .vimrc so ~/.vimrc'"
-
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
 " " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
 
-set t_Co=256 
+"==========================================
+"use bundle to manage plugins
+"plugin config begin
+"==========================================
 
-"不知道有没有用的.....><
-"Don't redraw while executing macros(Good performace config)
-set lazyredraw
-""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :call VisualSelection('f')<CR>
-vnoremap <silent> # :call VisualSelection('b')<CR>"
+" 0-bundle the plugins
+" vim plugin bundle
+" :BundleInstall  install
+" :BundleInstall! update
+" ::BundleClean   remove plugin not in list
+set nocompatible " be iMproved
 
-"删除多余空格
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
+"package dependent:  pep8
 
-" for error highlight，防止错误整行标红导致看不清
-highlight clear SpellBad
-highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
-highlight clear SpellCap
-highlight SpellCap term=underline cterm=underline
-highlight clear SpellRare
-highlight SpellRare term=underline cterm=underline
-highlight clear SpellLocal
-highlight SpellLocal term=underline cterm=underline
+filetype off " required! turn off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+"D 使用Vundle来管理Vundle
+Bundle 'gmarik/vundle'
+"D 代码片段
+Bundle 'vim-scripts/UltiSnips'
+"D 状态栏增强
+Bundle 'Lokaltog/vim-powerline'
+"D 括号显示增强
+Bundle 'kien/rainbow_parentheses.vim'
+"D 更高效的移动  W/fx
+Bundle 'Lokaltog/vim-easymotion'
+
+"D for golang
+Bundle 'jnwhiteh/vim-golang'
+
+"D file browser
+Bundle 'vim-scripts/The-NERD-tree'
+
+"D tag browser
+Bundle 'majutsushi/tagbar'
+
+"D super tab
+Bundle 'ervandew/supertab'
+
+"D task list
+Bundle 'vim-scripts/TaskList.vim'
+
+"D edit history   同类Undotree
+Bundle 'sjl/gundo.vim'
+
+"D nerdcommenter
+Bundle 'scrooloose/nerdcommenter'
+
+"D surround
+Bundle 'tpope/vim-surround'
+
+"D for git 尚未用起来
+Bundle 'tpope/vim-fugitive'
+
+"D for python check
+Bundle 'mitechie/pyflakes-pathogen'
+Bundle 'vim-scripts/pep8'
+
+"D 自动补全单引号，双引号等 Bundle 'underlog/ClosePairs'
+Bundle 'Raimondi/delimitMate'
+
+"for markdown
+Bundle 'plasticboy/vim-markdown'
+
+"for python auto complete
+Bundle 'davidhalter/jedi-vim'
+" too slow.....
+"Bundle 'klen/python-mode'
+
+""" 尚未决定保留，考察中=========================================================
+""" Git,  need git support
+""Bundle 'tpope/vim-git'
+""" ctrl + t   need ruby support """ 1  对ruby有依赖
+""Bundle 'wincent/Command-T'
+""" nedd ack support, 替代grep,可以查询
+""Bundle 'mileszs/ack.vim'
+""Bundle 'vim-scripts/grep.vim'
+"""导航相关
+""  "命令模式下:b1 :b2在tab之间跳转
+""Bundle 'sontek/minibufexpl.vim'
+"""BufExplorer + 1
+""Bundle 'vim-scripts/winmanager'
+""Bundle 'vim-scripts/bufkill.vim'
+""Bundle 'sontek/rope-vim'
+""Bundle 'fs111/pydoc.vim'
+""Bundle 'alfredodeza/pytest.vim'
+"补全"
+"omnicppcomplete
+"clang
+"others"
+"docunext/closetag.vim  自动比和html
+"Conque Shell + 1
+"syntastic – checks for syntax errors in many languages
+"vim-preview – [leader] P previews Markdown, Rdoc, Textile, html. Requires Ruby and other gems.
+"Tabular（非常方便的排版工具）
+"Tabularize
 
 
-"set guifont=PowerlineSymbols\ for\ Powerline 
-"set nocompatible 
+" end turn on
+filetype plugin indent on
+
+"========================== config for plugins begin ======================================
+
+" 1 Ultisnips
+"ultisnips  https://github.com/graudeejs/dot.vim/tree/master/snippets
+"http://www.ruchee.com/code/linux/vim/snippets/python.snippets.shtml
+"https://github.com/honza/snipmate-snippets/blob/master/snippets/python.snippets
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+"定义存放代码片段的文件夹 .vim下，使用自定义和默认的，将会的到全局，有冲突的会提示
+let g:UltiSnipsSnippetDirectories=["snippets", "bundle/UltiSnips/UltiSnips"]
+
+" 2-powerline  状态栏增强
+"if want to use fancy,need to add font patch -> git clone git://gist.github.com/1630581.git ~/.fonts/ttf-dejavu-powerline
+"let g:Powerline_symbols = 'fancy' 
+let g:Powerline_symbols = 'unicode'
+
+" 3 -rainbow_parentheses
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+" 4 - the nerdtree 
+map <leader>n :NERDTreeToggle<CR>
+
+" 5 - tagbar
+nmap <F9> :TagbarToggle<CR>
+
+" 6 - supertab
+let g:SuperTabDefaultCompletionType = "context"
+
+" 7 - tasklist
+map <leader>td <Plug>TaskList
+
+" 8 - gundo
+set rtp+=$GOROOT/misc/vim
+map <leader>h :GundoToggle<CR>
+
+" 9 - pyflakes
+let g:pyflakes_use_quickfix = 0
+
+" 10 -pep8 check
+let g:pep8_map='<leader>8'
+
+
+"" 11 -for taglist + ctag
+""notice: install catgs
+set tags=tags;/
+let Tlist_Ctags_Cmd="/usr/bin/ctags" 
+nnoremap <silent> <F8> :TlistToggle<CR>
+" taglist
+let Tlist_Auto_Highlight_Tag = 1 
+let Tlist_Auto_Open = 0 
+let Tlist_Auto_Update = 1 
+let Tlist_Close_On_Select = 0 
+let Tlist_Compact_Format = 0 
+let Tlist_Display_Prototype = 0 
+let Tlist_Display_Tag_Scope = 1 
+let Tlist_Enable_Fold_Column = 0 
+let Tlist_Exit_OnlyWindow = 1 
+let Tlist_File_Fold_Auto_Close = 0 
+let Tlist_GainFocus_On_ToggleOpen = 1 
+let Tlist_Hightlight_Tag_On_BufEnter = 1 
+let Tlist_Inc_Winwidth = 0 
+let Tlist_Max_Submenu_Items = 1 
+let Tlist_Max_Tag_Length = 30
+let Tlist_Process_File_Always = 0 
+let Tlist_Show_Menu = 0 
+let Tlist_Show_One_File = 1 
+let Tlist_Sort_Type = "order"
+let Tlist_Use_Horiz_Window = 0 
+let Tlist_Use_Right_Window = 1 
+let Tlist_WinWidth = 25  
+
+" 13 - jedi
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#get_definition_command = "<leader>d"
+let g:jedi#goto_command = "<leader>g"
+let g:jedi#rename_command = ""  "r
+let g:jedi#related_names_command = ""  "n
+let g:jedi#pydoc = "K"
+let g:jedi#autocompletion_command = "<C-p>"
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_function_definition = 0
+""let g:jedi#use_tabs_not_buffers = 0
+
+
+
+"" 4-auto completion  ctrl+p to match
+"""autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+"
+"au BufRead,BufNewFile *.go set filetype=go
+"set completeopt=menuone,longest  "",preview
+"
+"" 如有需要，可设置忽略部分错误
+"
+"" 7-file browser.    , + n open the browser window.   :b1  :b2 jump between tabs
+"
+"" 8-Rope refactoring and go to the definition
+"   " ,+a  选0 ,之后建立project,可使用,j ,r进行操作
+""imap <leader><r> <M-/>
+"""let ropevim_vim_completion=1
+"""let ropevim_extended_complete=1
+"""   ",+j 跳转到定义处
+"""map <leader>j :RopeGotoDefinition<CR>
+"""   ",+r 变量/函数重命名
+"""map <leader>r :RopeRename<CR>
+"""   "查看docs
+"""map <leader>d :RopeShowDoc<CR>
+"
+"" 9-searching ,目前还未用
+"map <leader>a <ESC>:Ack!
+"
+"" 10-py.test
+"" Execute the tests
+"nmap <silent><Leader>tf <Esc>:Pytest file<CR>
+"nmap <silent><Leader>tc <Esc>:Pytest class<CR>
+"nmap <silent><Leader>tm <Esc>:Pytest method<CR>
+"" cycle through test errors
+"nmap <silent><Leader>tn <Esc>:Pytest next<CR>
+"nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
+"nmap <silent><Leader>te <Esc>:Pytest error<CR>
+"
+""13-grep
+"nnoremap <silent> <F7> :Grep<CR>
+"""hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
+"""hi Cursorcolumn cterm=NONE ctermbg=black ctermfg=NONE
+"""hi CursorLine cterm=NONE ctermbg=darkgray ctermfg=NONE guibg=black guifg=NONE
+"
+""14-winmanager
+"let g:winManagerWindowLayout='FileExplorer|TagList'
+"map <c-w><c-f> :FirstExplorerWindow<cr> 
+"map <c-w><c-b> :BottomExplorerWindow<cr> 
+"map <c-w><c-t> :WMToggle<cr>
+"
+""15-minibuf
+"let g:miniBufExplMapWindowNavVim = 1
+"let g:miniBufExplMapWindowNavArrows = 1
+"let g:miniBufExplMapCTabSwitchBufs = 1
+"let g:miniBufExplModSelTarget = 1
+"let g:miniBufExplUseSingleClick = 0
+""filetype plugin indent on
+"http://www.vimbits.com/bits?page=2&sort=top"
+"========================== config for plugins end ======================================
+

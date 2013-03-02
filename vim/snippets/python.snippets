@@ -17,6 +17,9 @@ snippet fim
 from ${1} import ${2}
 endsnippet
 
+snippet from
+from ${1} import ${2}
+endsnippet
 
 #字符串注释
 snippet /
@@ -61,12 +64,15 @@ else:
     ${0:# TODO}
 endsnippet
 
-
-snippet else
+snippet el
 else:
     ${0:# TODO}
 endsnippet
 
+snippet ei
+elif ${1}:
+    ${2}
+endsnippet
 
 snippet for
 for ${1:i} in ${2:sequence}:
@@ -80,11 +86,18 @@ endsnippet
 
 snippet def
 def ${1:function_name}(${2}):
-    ${0:# TODO}
+    """${3docstirng for $1}"""
+    ${3:# TODO: write code...}
+endsnippet
+
+snippet defs
+def ${1:function_name}(self, ${2}):
+    """${3docstirng for $1}"""
+    ${3:# TODO: write code...}
 endsnippet
 
 snippet cla
-class ${1:clsname}(${2}):
+class ${1:clsname}(${2:object}):
     """${3:docstring for $1}"""
     def __init__(self${4}):
         ${5}
@@ -105,6 +118,13 @@ endsnippet
 
 snippet as
 assert ${1}
+endsnippet
+
+snippet dowh
+while True:
+    ${1: # TODO: write code...}
+    if ${2:condition}:
+        break
 endsnippet
 
 #单个关键字
@@ -138,4 +158,39 @@ endsnippet
 
 snippet pri
 print '${1}'
+endsnippet
+
+snippet property
+def ${1}():
+    doc = "${2: The $1 property.}"
+    def fget(self):
+        ${3:return self._$1}
+    def fset(self, value):
+        ${4:self._$1 = value}
+    def fdel(self):
+        ${5:del self._$1}
+    return locals()
+$1 = property(**$1())
+endsnippet
+
+snippet ld
+${1:var} = lambda ${2}: ${3}
+endsnippet
+
+snippet _
+__${1:init}__${2}
+endsnippet
+
+snippet pdb
+import pdb; pdb.set_trace()
+endsnippet
+
+# ------- docs -----------
+snippet doc
+"""
+@Author: ${1:`wklken`}
+@Email: ${2:`wklken@yeah.net`}
+@Date: ${3}
+@Desc: ${4}
+"""
 endsnippet
