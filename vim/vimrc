@@ -427,6 +427,7 @@ Bundle 'davidhalter/jedi-vim'
 " too slow.....
 "Bundle 'klen/python-mode'
 
+
 """ 尚未决定保留，考察中=========================================================
 """ Git,  need git support
 ""Bundle 'tpope/vim-git'
@@ -559,7 +560,7 @@ let Tlist_WinWidth = 25
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#get_definition_command = "<leader>d"
 let g:jedi#goto_command = "<leader>g"
-let g:jedi#rename_command = ""  "r
+let g:jedi#rename_command = "<leader>r"
 let g:jedi#related_names_command = ""  "n
 let g:jedi#pydoc = "K"
 let g:jedi#autocompletion_command = "<C-p>"
