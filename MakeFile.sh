@@ -49,3 +49,8 @@ if [ ! -d ~/bak/vimbk ]
 then
     mkdir -p ~/bak/vimbk
 fi
+
+if [ ! -d ~/bak/vimundo ]
+then
+    mkdir -p ~/bak/vimundo
+fi
