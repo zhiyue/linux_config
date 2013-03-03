@@ -1,6 +1,8 @@
 #vim
 需手动安装包: ctags,pep8
 
+基础教程可参考原先博文: http://blog.csdn.net/wklken/article/details/7533272
+
 ##插件列表
 
     "D 使用Vundle来管理Vundle
@@ -265,4 +267,12 @@ https://github.com/vim-scripts/mru.vim
 
 
 
+
+写在最后：
+后续不会有大的更新了，够用就好
+
+wklken 凌岳(Pythoner/vimer/伪geek)  
+emali: wklken@yeah.net  
+blog: http://blog.csdn.net/wklken  
+2013-03-03
 
