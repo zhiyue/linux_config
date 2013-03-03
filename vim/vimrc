@@ -667,7 +667,6 @@ let g:ctrlp_follow_symlinks=1
 "set completeopt=menuone,longest  "",preview
 "
 "" 如有需要，可设置忽略部分错误
-"
 "" 7-file browser.    , + n open the browser window.   :b1  :b2 jump between tabs
 "
 "" 8-Rope refactoring and go to the definition
@@ -682,9 +681,6 @@ let g:ctrlp_follow_symlinks=1
 """   "查看docs
 """map <leader>d :RopeShowDoc<CR>
 "
-"" 9-searching ,目前还未用
-"map <leader>a <ESC>:Ack!
-"
 "" 10-py.test
 "" Execute the tests
 "nmap <silent><Leader>tf <Esc>:Pytest file<CR>
@@ -694,12 +690,6 @@ let g:ctrlp_follow_symlinks=1
 "nmap <silent><Leader>tn <Esc>:Pytest next<CR>
 "nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
 "nmap <silent><Leader>te <Esc>:Pytest error<CR>
-"
-""13-grep
-"nnoremap <silent> <F7> :Grep<CR>
-"""hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
-"""hi Cursorcolumn cterm=NONE ctermbg=black ctermfg=NONE
-"""hi CursorLine cterm=NONE ctermbg=darkgray ctermfg=NONE guibg=black guifg=NONE
 "
 ""14-winmanager
 "let g:winManagerWindowLayout='FileExplorer|TagList'
