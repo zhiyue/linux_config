@@ -1,6 +1,78 @@
 #vim
 需手动安装包: ctags,pep8
 
+##插件列表
+
+    "D 使用Vundle来管理Vundle
+    Bundle 'gmarik/vundle'
+    --
+    "D 代码片段
+    Bundle 'vim-scripts/UltiSnips'
+    --
+    "D 状态栏增强
+    Bundle 'Lokaltog/vim-powerline'
+    --
+    "D 括号显示增强
+    Bundle 'kien/rainbow_parentheses.vim'
+    --
+    "D 更高效的移动  W/fx
+    Bundle 'Lokaltog/vim-easymotion'
+    --
+    "D for golang
+    Bundle 'jnwhiteh/vim-golang'
+    --
+    "D file browser
+    Bundle 'vim-scripts/The-NERD-tree'
+    --
+    "D tag browser
+    Bundle 'majutsushi/tagbar'
+    --
+    "D super tab
+    Bundle 'ervandew/supertab'
+    --
+    "D task list
+    Bundle 'vim-scripts/TaskList.vim'
+    --
+    "D edit history   同类Undotree
+    Bundle 'sjl/gundo.vim'
+    --
+    "D nerdcommenter
+    Bundle 'scrooloose/nerdcommenter'
+    --
+    "D surround
+    Bundle 'tpope/vim-surround'
+    --
+    "D for git 尚未用起来
+    Bundle 'tpope/vim-fugitive'
+    --
+    "D for python check
+    Bundle 'mitechie/pyflakes-pathogen'
+    Bundle 'vim-scripts/pep8'
+    --
+    "D 自动补全单引号，双引号等 Bundle 'underlog/ClosePairs'
+    Bundle 'Raimondi/delimitMate'
+    --
+    "for markdown
+    Bundle 'plasticboy/vim-markdown'
+    --
+    "for python auto complete
+    Bundle 'davidhalter/jedi-vim'
+    --
+    "for mru, recently opened files
+    Bundle 'vim-scripts/mru.vim'
+    --
+    "for nginx conf file highlight.   need to confirm it works
+    Bundle 'thiderman/nginx-vim-syntax'
+    --
+    "for copy/paste enhance
+    Bundle 'vim-scripts/YankRing.vim'
+    --
+    "for repeat -> enhance surround.vim
+    Bundle 'tpope/vim-repeat'
+    --
+    "for file search ctrlp
+    Bundle 'kien/ctrlp.vim'"
+
 
 #vim快捷键说明:
 
@@ -101,6 +173,12 @@ object 可能是： w 一个单词， W 一个以空格为分隔的单词， s �
     ctrl+n  相对行号绝对行号变换，默认用相对行号 http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
     5j/5k  在相对行号模式下，往上移动5行 往下移动5行，不喜欢注解line 142附近relativenumber配置
 
+    ,y 展示历史剪贴板
+    ,yc 清空
+    yy/dd -> p -> ctrl+p可以替换非最近一次剪贴内容
+
+    ,p 开启文件搜索 ctrlp
+
 ##插件相关快捷键
 ###easymotion
 
@@ -177,20 +255,13 @@ https://github.com/vim-scripts/mru.vim
     py.test
     bufkill
     vim-unimpaired
-    #自动识别文件编码；
-    Bundle 'FencView.vim'
-    CloseTag for html
+    Bundle 'FencView.vim' #自动识别文件编码；
     MiniBuferExplorer/Buferexplorer
-    commandt/grep/ack/ctrlp ??
-    -Yankring
     TagHighlight
     -Conque
-    auto
     vim-javascript  for js
     sparkup
     -PeepOpen
-    repeat -> enhance sourround
-    Unimpaired
 
 
 

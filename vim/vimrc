@@ -480,6 +480,15 @@ Bundle 'vim-scripts/mru.vim'
 "for nginx conf file highlight.   need to confirm it works
 Bundle 'thiderman/nginx-vim-syntax'
 
+"for copy/paste enhance
+Bundle 'vim-scripts/YankRing.vim'
+
+"for repeat -> enhance surround.vim
+Bundle 'tpope/vim-repeat'
+
+"for file search ctrlp
+Bundle 'kien/ctrlp.vim'
+
 "for html/xml auto close tag
 "Bundle "vim-scripts/closetag.vim"
 
@@ -633,6 +642,21 @@ let MRU_Max_Menu_Entries = 20
 let MRU_Use_Current_Window = 0
 let MRU_Max_Entries = 100
 
+" 15 - yankring
+map <leader>y :YRShow<cr>
+map <leader>yc :YRClear<CR>
+
+" 16 - ctrlp
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+"set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux"
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|.rvm$'
+let g:ctrlp_working_path_mode=0
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=15
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
 
 "" 4-auto completion  ctrl+p to match
 """autocmd FileType python set omnifunc=pythoncomplete#Complete
