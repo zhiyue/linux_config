@@ -643,6 +643,7 @@ let MRU_Use_Current_Window = 0
 let MRU_Max_Entries = 100
 
 " 15 - yankring
+let g:yankring_replace_n_nkey = ''
 map <leader>y :YRShow<cr>
 map <leader>yc :YRClear<CR>
 
