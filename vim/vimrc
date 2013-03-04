@@ -644,6 +644,7 @@ let MRU_Max_Entries = 100
 
 " 15 - yankring
 let g:yankring_replace_n_nkey = ''
+let g:yankring_history_dir = '~/bak/'
 map <leader>y :YRShow<cr>
 map <leader>yc :YRClear<CR>
 
