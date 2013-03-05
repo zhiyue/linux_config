@@ -10,6 +10,9 @@ My linux config file. .bash_profile .alias bin .vimrc etc.
 
     bash-completion
     tmux
+    colordiff
+    pep8
+
 
 - LINUX:
 

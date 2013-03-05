@@ -45,6 +45,7 @@ then
     mkdir ~/tmp
 fi
 
+#vim bk and undo dir
 if [ ! -d ~/bak/vimbk ]
 then
     mkdir -p ~/bak/vimbk
@@ -54,3 +55,10 @@ if [ ! -d ~/bak/vimundo ]
 then
     mkdir -p ~/bak/vimundo
 fi
+
+#configs
+if [ -d ~/.ssh ]
+then
+    mkdir -p ~/.ssh
+fi
+ln -s $CF_DIR/config/ssh-config ~/.ssh/config
