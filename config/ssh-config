@@ -7,3 +7,5 @@ ControlPersist 4h
 
 #去掉连接等待时间
 GSSAPIAuthentication no
+
+StrictHostKeyChecking no
