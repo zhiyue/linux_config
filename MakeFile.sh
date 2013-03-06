@@ -57,8 +57,12 @@ then
 fi
 
 #configs
+  #for ssh
 if [ -d ~/.ssh ]
 then
     mkdir -p ~/.ssh
 fi
 ln -s $CF_DIR/config/ssh-config ~/.ssh/config
+
+  #for tmux
+ln -s $CF_DIR/config/tmux-config ~/.tmux.conf

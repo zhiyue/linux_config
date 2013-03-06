@@ -130,7 +130,8 @@ alias redis='/etc/init.d/redis_6379'
 alias rediscli='redis-cli'
 
 #for tmux
-alias tmux='tmux -2'
+alias tm='tmux -2'
+alias tma='tmux -2 attach'
 
 #my own script
 alias bk="~/bin/back_up.py -i"    #use my backup script to backup a file/dir
