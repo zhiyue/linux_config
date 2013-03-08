@@ -15,3 +15,16 @@ set-window-option -g utf8 on         #开启窗口的UTF-8支持
 #set-option -g prefix C-a
 #unbind-key C-b
 #bind-key C-a send-prefix"')"
+#
+
+# key change
+unbind '"'
+bind - splitw -v # 分割成上下两个窗口
+unbind %
+bind | splitw -h # 分割成左右两个窗口'"'
+
+bind k selectp -U # 选择上窗格
+bind j selectp -D # 选择下窗格
+bind h selectp -L # 选择左窗格
+bind l selectp -R # 选择右窗格
+

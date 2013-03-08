@@ -247,6 +247,21 @@ https://github.com/vim-scripts/mru.vim
 
     ,f  show recently opened files
 
+###auto
+https://github.com/vim-scripts/auto.git
+
+    1.Normal mode
+     ;;      Exit without saving
+     ,,      Save and exit
+
+    2.Insert mode
+     ;;      return Normal mode
+     ,,      return Normal mode
+     mm      return Normal mode
+     <Alt-j>  Down
+     <Alt-k> Up
+     <Alt-h> Left
+     <Alt-l>  Right
 
 
 

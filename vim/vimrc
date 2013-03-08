@@ -488,6 +488,12 @@ Bundle 'tpope/vim-repeat'
 "for file search ctrlp
 Bundle 'kien/ctrlp.vim'
 
+"自动在类似==两边添加空格
+Bundle 'auto'
+
+"(Vit)ality is a plugin that makes (V)im play nicely with (i)Term 2 and (t)mux
+"?? leave or not?
+Bundle 'sjl/vitality.vim'
 "for html/xml auto close tag
 "Bundle "vim-scripts/closetag.vim"
 
@@ -661,6 +667,11 @@ let g:ctrlp_follow_symlinks=1
 
 " for python.vim syntax highlight
 let python_highlight_all = 1
+
+
+"""""""""""""""""
+"  define func  "
+"""""""""""""""""
 
 "" 4-auto completion  ctrl+p to match
 """autocmd FileType python set omnifunc=pythoncomplete#Complete
