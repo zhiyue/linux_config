@@ -488,8 +488,8 @@ Bundle 'tpope/vim-repeat'
 "for file search ctrlp
 Bundle 'kien/ctrlp.vim'
 
-"自动在类似==两边添加空格
-Bundle 'auto'
+"自动在类似==两边添加空格 会导致F2和relativenum不可用
+"Bundle 'auto'
 
 "(Vit)ality is a plugin that makes (V)im play nicely with (i)Term 2 and (t)mux
 "?? leave or not?
