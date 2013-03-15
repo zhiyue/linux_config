@@ -470,6 +470,7 @@ Bundle 'plasticboy/vim-markdown'
 
 "for python auto complete
 Bundle 'davidhalter/jedi-vim'
+"考虑   python-mode
 " too slow.....
 "Bundle 'klen/python-mode'
 
@@ -488,46 +489,13 @@ Bundle 'tpope/vim-repeat'
 "for file search ctrlp
 Bundle 'kien/ctrlp.vim'
 
-"自动在类似==两边添加空格 会导致F2和relativenum不可用
-"Bundle 'auto'
+
+"for js
+Bundle 'pangloss/vim-javascript'
 
 "(Vit)ality is a plugin that makes (V)im play nicely with (i)Term 2 and (t)mux
 "?? leave or not?
 Bundle 'sjl/vitality.vim'
-"for html/xml auto close tag
-"Bundle "vim-scripts/closetag.vim"
-
-
-"for nerd tree, auto close when last buffer closed
-"Bundle 'vim-scripts/bufkill.vim'
-
-""" 尚未决定保留，考察中=========================================================
-""" Git,  need git support
-""Bundle 'tpope/vim-git'
-""" ctrl + t   need ruby support """ 1  对ruby有依赖
-""Bundle 'wincent/Command-T'
-""" nedd ack support, 替代grep,可以查询
-""Bundle 'mileszs/ack.vim'
-""Bundle 'vim-scripts/grep.vim'
-"""导航相关
-""  "命令模式下:b1 :b2在tab之间跳转
-""Bundle 'sontek/minibufexpl.vim'
-"""BufExplorer + 1
-""Bundle 'vim-scripts/winmanager'
-""Bundle 'sontek/rope-vim'
-""Bundle 'fs111/pydoc.vim'
-""Bundle 'alfredodeza/pytest.vim'
-"补全"
-"omnicppcomplete
-"clang for  c / c++
-"others"
-"docunext/closetag.vim  自动比和html
-"Conque Shell + 1
-"syntastic – checks for syntax errors in many languages
-"vim-preview – [leader] P previews Markdown, Rdoc, Textile, html. Requires Ruby and other gems.
-"Tabular（非常方便的排版工具）
-"Tabularize
-
 
 " end turn on
 filetype plugin indent on
@@ -668,57 +636,12 @@ let g:ctrlp_follow_symlinks=1
 " for python.vim syntax highlight
 let python_highlight_all = 1
 
+" 17 - javascript
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 
 """""""""""""""""
 "  define func  "
 """""""""""""""""
-
-"" 4-auto completion  ctrl+p to match
-"""autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-"
-"au BufRead,BufNewFile *.go set filetype=go
-"set completeopt=menuone,longest  "",preview
-"
-"" 如有需要，可设置忽略部分错误
-"" 7-file browser.    , + n open the browser window.   :b1  :b2 jump between tabs
-"
-"" 8-Rope refactoring and go to the definition
-"   " ,+a  选0 ,之后建立project,可使用,j ,r进行操作
-""imap <leader><r> <M-/>
-"""let ropevim_vim_completion=1
-"""let ropevim_extended_complete=1
-"""   ",+j 跳转到定义处
-"""map <leader>j :RopeGotoDefinition<CR>
-"""   ",+r 变量/函数重命名
-"""map <leader>r :RopeRename<CR>
-"""   "查看docs
-"""map <leader>d :RopeShowDoc<CR>
-"
-"" 10-py.test
-"" Execute the tests
-"nmap <silent><Leader>tf <Esc>:Pytest file<CR>
-"nmap <silent><Leader>tc <Esc>:Pytest class<CR>
-"nmap <silent><Leader>tm <Esc>:Pytest method<CR>
-"" cycle through test errors
-"nmap <silent><Leader>tn <Esc>:Pytest next<CR>
-"nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
-"nmap <silent><Leader>te <Esc>:Pytest error<CR>
-"
-""14-winmanager
-"let g:winManagerWindowLayout='FileExplorer|TagList'
-"map <c-w><c-f> :FirstExplorerWindow<cr> 
-"map <c-w><c-b> :BottomExplorerWindow<cr> 
-"map <c-w><c-t> :WMToggle<cr>
-"
-""15-minibuf
-"let g:miniBufExplMapWindowNavVim = 1
-"let g:miniBufExplMapWindowNavArrows = 1
-"let g:miniBufExplMapCTabSwitchBufs = 1
-"let g:miniBufExplModSelTarget = 1
-"let g:miniBufExplUseSingleClick = 0
-""filetype plugin indent on
-"http://www.vimbits.com/bits?page=2&sort=top"
-"========================== config for plugins end ======================================
 

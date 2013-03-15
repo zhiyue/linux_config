@@ -45,6 +45,9 @@ export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/WebGameStore:/home/ken/Ku
 export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/WebGameStore/KwSearch
 export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/IpLocator
 export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/GameStore
+export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/
+export PYTHONPATH=$PYTHONPATH:/home/ken/Dropbox/workspace/tutu
+export PYTHONPATH=$PYTHONPATH:/home/ken/Dropbox/workspace
 
 #设置了Ls的目录颜色
 export HOSTSHORT=`hostname`
@@ -88,8 +91,8 @@ done
 
 
 #need to install linuxlogo, sudo apt-get install linuxlogo
-LOGO_EXIST=`which linuxlogo`
-if [ -n $LOGO_EXIST ]
+which linuxlogo > /dev/null 2>&1
+if [ $? == 0 ]
 then
     linuxlogo -L ubuntu -a
 fi

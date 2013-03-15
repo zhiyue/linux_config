@@ -3,6 +3,8 @@
 
 基础教程可参考原先博文: http://blog.csdn.net/wklken/article/details/7533272
 
+配置了relative num,可参考: http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
+
 ##插件列表
 
     "D 使用Vundle来管理Vundle
@@ -250,18 +252,18 @@ https://github.com/vim-scripts/mru.vim
 ###auto
 https://github.com/vim-scripts/auto.git
 
-    1.Normal mode
-     ;;      Exit without saving
-     ,,      Save and exit
+   1.Normal mode
+    ;;      Exit without saving
+    ,,      Save and exit
 
-    2.Insert mode
-     ;;      return Normal mode
-     ,,      return Normal mode
-     mm      return Normal mode
-     <Alt-j>  Down
-     <Alt-k> Up
-     <Alt-h> Left
-     <Alt-l>  Right
+   2.Insert mode
+    ;;      return Normal mode
+    ,,      return Normal mode
+    mm      return Normal mode
+    <Alt-j>  Down
+    <Alt-k> Up
+    <Alt-h> Left
+    <Alt-l>  Right
 
 
 
@@ -279,6 +281,14 @@ https://github.com/vim-scripts/auto.git
     vim-javascript  for js
     sparkup
     -PeepOpen
+    jslint js 语法校验
+    Gist 分享代码到 github 的小工具
+    web-indent JavaScript 的语法缩进
+    jsbeautify JavaScript 代码格式化，快捷键是 <Leader>ff
+    Scrath 打开一个临时的缓冲区随便记录东西，快捷键是 <Leader>S
+    genutils 给 vim 添加一些函数库
+    vim-lesscss 高亮 lesscss 格式
+    vim-css3 高亮 css3 中的属性
 
 
 
