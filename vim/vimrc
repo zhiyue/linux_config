@@ -317,11 +317,21 @@ map <Down> <Nop>
 map j gj
 map k gk
 
+" better command line editing
+cnoremap <C-j> <t_kd>
+cnoremap <C-k> <t_ku>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+
 "Smart way to move between windows 分屏窗口移动
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" Go to home and end using capitalized directions
+noremap H ^
+noremap L $
 
 " Remap VIM 0 to first non-blank character
 map 0 ^
@@ -338,6 +348,9 @@ nnoremap <F4> :set wrap! wrap?<CR>
 set pastetoggle=<F5>            " when in insert mode, press <F2> to go to
                                 "    paste mode, where you can paste mass data
                                 "    that won't be autoindented
+
+" disbale paste mode when leaving insert mode                                
+au InsertLeave * set nopaste
 
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
@@ -374,14 +387,21 @@ noremap <left> :bp<CR>
 noremap <right> :bn<CR>
 
 ""Jump to start and end of line using the home row keys
-
 ""
 nmap t o<ESC>k
 nmap T O<ESC>j
 
-" Go to home and end using capitalized directions
-noremap H ^
-noremap L $
+" ctrl +jk to move lines
+noremap <C-j> :m+<CR>
+noremap <C-k> :m-2<CR>
+inoremap <C-j> <Esc>:m+<CR>
+inoremap <C-k> <Esc>:m-2<CR>
+
+"
+" remap U to <C-r> for easier redo
+nnoremap U <C-r>
+
+"au VimResized * exe "normal! \<c-w>=""
 
 " select all
 map <Leader>a ggVG"
@@ -644,4 +664,12 @@ let g:html_indent_style1 = "inc"
 """""""""""""""""
 "  define func  "
 """""""""""""""""
+
+"""""""""""""""""
+"  for mac vim  "
+"""""""""""""""""
+if version >= 730 && has("macunix")
+	  " Default yank and paste go to Mac's clipboard
+	  set clipboard=unnamed
+end
 
