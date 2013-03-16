@@ -151,6 +151,13 @@ object 可能是： w 一个单词， W 一个以空格为分隔的单词， s �
     Ctrl-t增加缩进
     Ctrl-d减小缩进。
 
+visual mode
+
+    V + j/k  选中多行  -> y/d/x 赋值删除
+    Vap  选中一个段落
+    Vaw  单词 -> Va2w
+    Vas  选中一个句子
+
 ##扩展快捷键
 
     F1   关掉，防止跳出帮助
