@@ -26,13 +26,33 @@
 
 "set guifont=Monaco:h20          " 字体 && 字号  
 "配色方案
+"
+"==========================================
+"colors and fonts
+"==========================================
+"开启语法高亮
+syntax enable
+syntax on
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions-=T
+    set guioptions+=e
+    set t_Co=256
+    set guitablabel=%M\ %t
+endif
+
 set background=dark
 
-"colorscheme desert 
+" color theme solarized config
+"let g:solarized_termcolors=256
 "colorscheme solarized
+
 "同sublime text2
 colorscheme molokai
 let g:molokai_original = 0
+
+"colorscheme desert 
 
 " history存储长度。
 set history=2000       
@@ -187,22 +207,6 @@ set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\
 set laststatus=2
 
 
-"==========================================
-"colors and fonts
-"==========================================
-"开启语法高亮
-syntax enable
-syntax on
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
-
-set t_Co=256 
 
 "==========================================
 " file encode
