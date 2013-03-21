@@ -155,7 +155,6 @@ set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 
 
 
-set encoding=utf-8
 set showcmd
 " A buffer becomes hidden when it is abandoned
 set hidden
@@ -213,13 +212,16 @@ set laststatus=2
 " file encode
 "==========================================
 " 设置新文件的编码为 UTF-8
+"set fileencodings=ucs-bom,utf-8,gb2312,big5,latin1
+
 set encoding=utf-8                                  
-set fileencodings=ucs-bom,utf-8,gb2312,big5,latin1
+" 自动判断编码时，依次尝试以下编码：
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set helplang=cn
+"language message zh_CN.UTF-8
+"set langmenu=zh_CN.UTF-8
 "set enc=2byte-gb18030
 
-" 自动判断编码时，依次尝试以下编码：
-" gb18030 最好在 UTF-8 前面，否则其它编码的文件极可能被误识为 UTF-8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
