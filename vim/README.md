@@ -135,6 +135,8 @@ object 可能是： w 一个单词， W 一个以空格为分隔的单词， s �
     <C-r> → redo
     % : 匹配括号移动，包括 (, {, [
     * 和 #:  匹配光标当前所在的单词，移动光标到下一个（或上一个）匹配单词（*是下一个，#是上一个）
+    { 上一段(以空白行分隔) - } 下一段(以空白行分隔)
+    gd 跳到光标所在位置词(word)的定义位置 g(o)d(efine)
 
 
 命令模式下
@@ -157,6 +159,13 @@ visual mode
     Vap  选中一个段落
     Vaw  单词 -> Va2w
     Vas  选中一个句子
+宏操作
+
+    ma 将当前位置标记为a，26个字母均可做标记，mb、mc等等；
+    'a 跳转到a标记的位置； - 这是一组很好的文档内标记方法，在文档中跳跃编辑时很有用；
+    qa 将之后的所有键盘操作录制下来，直到再次在命令模式按下q，并存储在a中；
+    @a 执行刚刚记录在a里面的键盘操作；
+    @@ 执行上一次的macro操作；'
 
 ##扩展快捷键
 
@@ -287,7 +296,7 @@ https://github.com/vim-scripts/auto.git
     TagHighlight
     -Conque
     vim-javascript  for js
-    sparkup
+    sparkup , for zen coding
     -PeepOpen
     jslint js 语法校验
     Gist 分享代码到 github 的小工具
