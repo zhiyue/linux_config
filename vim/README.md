@@ -281,7 +281,9 @@ https://github.com/vim-scripts/auto.git
     <Alt-k> Up
     <Alt-h> Left
     <Alt-l>  Right
+### python_match
 
+    % 在if/elif/else  try/except/catch for/continue/break while/continue/break 行走
 
 
 ##待考察插件

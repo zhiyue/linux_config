@@ -517,6 +517,9 @@ Bundle 'plasticboy/vim-markdown'
 
 "for python auto complete
 Bundle 'davidhalter/jedi-vim'
+Bundle 'python.vim'
+Bundle 'vim-scripts/python_match.vim'
+Bundle 'vim-scripts/pythoncomplete'
 "考虑   python-mode
 " too slow.....
 "Bundle 'klen/python-mode'
@@ -543,6 +546,10 @@ Bundle 'pangloss/vim-javascript'
 "(Vit)ality is a plugin that makes (V)im play nicely with (i)Term 2 and (t)mux
 "?? leave or not?
 Bundle 'sjl/vitality.vim'
+
+Bundle 'altercation/vim-colors-solarized'
+
+"Bundle 'nathanaelkane/vim-indent-guides'
 
 " end turn on
 filetype plugin indent on
@@ -690,6 +697,46 @@ let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
+"18 - python-mode
+""let g:pymode_lint_write = 0
+"let g:pymode_rope = 1
+"
+"" Documentation
+"let g:pymode_doc = 1
+"let g:pymode_doc_key = 'K'
+"
+""Linting
+"let g:pymode_lint = 1
+"let g:pymode_lint_checker = "pyflakes,pep8"
+"" Auto check on save
+"let g:pymode_lint_write = 1
+"
+"" Support virtualenv
+"let g:pymode_virtualenv = 1
+"
+"" Enable breakpoints plugin
+"let g:pymode_breakpoint = 1
+"let g:pymode_breakpoint_key = '<leader>b'
+"
+"" syntax highlighting
+"let g:pymode_syntax = 1
+"let g:pymode_syntax_all = 1
+"let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+"let g:pymode_syntax_space_errors = g:pymode_syntax_all
+"
+"" Don't autofold code
+"let g:pymode_folding = 0
+
+"let g:indent_guides_auto_colors = 1
+""autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+""autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+"hi IndentGuidesOdd  ctermbg=grey
+"hi IndentGuidesEven ctermbg=darkgrey
+"set ts=4 sw=4 noet
+"let g:indent_guides_start_level = 2
+"let g:indent_guides_guide_size = 1
+
+
 """""""""""""""""
 "  define func  "
 """""""""""""""""
@@ -699,6 +746,6 @@ let g:html_indent_style1 = "inc"
 """""""""""""""""
 if version >= 730 && has("macunix")
 	  " Default yank and paste go to Mac's clipboard
-	  set clipboard=unnamed
 end
+	  set clipboard=unnamed
 
