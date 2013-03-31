@@ -46,7 +46,10 @@ set t_Co=256
 set background=dark
 
 " color theme solarized config
-"let g:solarized_termcolors=256
+" never open this :let g:solarized_termcolors=256
+"let g:solarized_termtrans=0
+"let g:solarized_contrast="normal"
+"let g:solarized_visibility="normal"
 "colorscheme solarized
 
 "同sublime text2
