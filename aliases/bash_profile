@@ -48,7 +48,10 @@ export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/GameStore
 export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/
 export PYTHONPATH=$PYTHONPATH:/home/ken/Dropbox/workspace/tutu
 export PYTHONPATH=$PYTHONPATH:/home/ken/Dropbox/workspace
-export PYTHONPATH=$PYTHONPATH:/Users/ken/workspace/
+export PYTHONPATH=$PYTHONPATH:/Users/ken/workspace/wklken/1/
+export PYTHONPATH=$PYTHONPATH:/Users/ken/workspace/wklken/1/mdpress
+
+export GOPATH=/Users/ken/workspace/goweb
 
 #设置了Ls的目录颜色
 export HOSTSHORT=`hostname`

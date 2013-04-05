@@ -15,6 +15,9 @@
 
 
 #extend old
+
+alias vim="mvim -v"
+
 alias vi="vim"
 alias edit="vim"
 alias grep="grep -rnE --color"

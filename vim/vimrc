@@ -47,14 +47,14 @@ set background=dark
 
 " color theme solarized config
 " never open this :let g:solarized_termcolors=256
-"let g:solarized_termtrans=0
-"let g:solarized_contrast="normal"
-"let g:solarized_visibility="normal"
-"colorscheme solarized
+let g:solarized_termtrans=0
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
+colorscheme solarized
 
 "同sublime text2
-colorscheme molokai
-let g:molokai_original = 0
+"colorscheme molokai
+"let g:molokai_original = 0
 
 "colorscheme desert 
 
@@ -519,7 +519,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'plasticboy/vim-markdown'
 
 "for python auto complete
-Bundle 'davidhalter/jedi-vim'
+"Bundle 'davidhalter/jedi-vim'
 Bundle 'python.vim'
 Bundle 'vim-scripts/python_match.vim'
 Bundle 'vim-scripts/pythoncomplete'
@@ -553,6 +553,9 @@ Bundle 'sjl/vitality.vim'
 Bundle 'altercation/vim-colors-solarized'
 
 "Bundle 'nathanaelkane/vim-indent-guides'
+"迄今位置最好的自动VIM自动补全插件了吧
+"Vundle的这个写法，是直接取该插件在Github上的repo
+Bundle 'Valloric/YouCompleteMe'
 
 " end turn on
 filetype plugin indent on

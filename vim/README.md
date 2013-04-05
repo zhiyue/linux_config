@@ -5,6 +5,14 @@
 
 配置了relative num,可参考: http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
 
+更新使用YoucompleteMe插件: https://github.com/Valloric/YouCompleteMe
+
+    1.vimrc中 Bundle 'Valloric/YouCompleteMe'
+    2. :BundleInstall
+    3. 看github上的readme, 根据系统，更新vim到7.0.3584以上的版本,编译YouCompleteMe
+    4. alias vim 到新编译的, eg.  mac下  alias vim='mvim -v'
+    
+    
 ##插件列表
 
     "D 使用Vundle来管理Vundle
