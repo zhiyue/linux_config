@@ -250,8 +250,8 @@ set completeopt=longest,menu
  
 "离开插入模式后自动关闭预览窗口
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
- 
 "回车即选中当前项
+ 
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
  
 "上下左右键的行为 会显示其他信息
@@ -409,10 +409,10 @@ nmap t o<ESC>k
 nmap T O<ESC>j
 
 " ctrl +jk to move lines
-noremap <C-j> :m+<CR>
-noremap <C-k> :m-2<CR>
-inoremap <C-j> <Esc>:m+<CR>
-inoremap <C-k> <Esc>:m-2<CR>
+"noremap <C-k> :m+<CR>
+"noremap <C-j> :m-2<CR>
+"inoremap <C-j> <Esc>:m+<CR>
+"inoremap <C-k> <Esc>:m-2<CR>
 
 " Quickly close the current window
 nnoremap <leader>q :q<CR>
