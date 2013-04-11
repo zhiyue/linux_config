@@ -64,7 +64,7 @@ alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 alias gu='iconv -f gbk -t utf-8'  #两种类型编码转换
 alias ug='iconv -f utf-8 -t gbk'
 alias ssh='ssh -2'
-alias ms='mysql -u root'    #mysql
+alias ms='mysql -uroot -p123456'    #mysql
 
 alias sv="sudo vim"      #用sudo编辑文件时
 alias vd='vimdiff'  #vim diff两个文件
@@ -143,6 +143,7 @@ alias bk="~/bin/back_up.py -i"    #use my backup script to backup a file/dir
 alias reload='source ~/.bashrc'
 alias bashrc='vim ~/.bashrc && source ~/.bashrc'
 alias bashpr='vim ~/.bash_profile && source ~/.bash_profile'
+alias vh='sudo vim /etc/hosts'
 
 #make a trash for linux
 mkdir -p ~/.trash
