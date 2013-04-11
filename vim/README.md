@@ -12,6 +12,13 @@
     3. 看github上的readme, 根据系统，更新vim到7.0.3584以上的版本,编译YouCompleteMe
     4. alias vim 到新编译的, eg.  mac下  alias vim='mvim -v'
     
+配置vim solarized主题(嫌麻烦的话修改vimrc中使用monokai主题吧)
+
+只装配色，进去的话效果不要，对应terminal要安装颜色方案
+
+    $ git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git
+    $ cd gnome-terminal-colors-solarized
+    $ ./install.sh
     
 ##插件列表
 
