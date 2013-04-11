@@ -18,6 +18,7 @@ done
 
 #dir_colors
 ln -sf $ALIASES_DIR/dir_colors ~/.dir_colors
+ln -sf $ALIASES_DIR/dircolors.256dark ~/.dircolors
 
 #completion
 COMPLETION_DIR="$CF_DIR/completions"
