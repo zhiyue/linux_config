@@ -124,6 +124,7 @@ object 可能是： w 一个单词， W 一个以空格为分隔的单词， s �
     v2i) → 会选择 map (+) ("foo")
     v2a) → 会选择 (map (+) ("foo"))
 
+v/y/d/c  -> i/a  -> { [ ( " '
  <start position><command><end position>
 
     0y$ 复制整行
