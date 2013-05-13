@@ -40,6 +40,8 @@ alias diff='colordiff'
 #alias ln='ln -s'
 alias bc='bc -l'
 alias chrome='chromium-browser'
+alias py='python'
+alias ipy='ipython'
 
 #chdir
 alias ..="cd .."
