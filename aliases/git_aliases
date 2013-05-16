@@ -3,11 +3,17 @@
 # Git shortcuts
 alias ga='git add '
 alias gd='git diff'
+alias gr='git rm'
 alias gs='git status'
 alias gl='git log'
 alias gc='git commit -m'
 alias gull='git pull origin'
 alias gush='git push origin'
+alias gco='git checkout'
+
+#alias grpyc="git status | awk '{if($2=\"deleted:\"){printf $3\" \"}}'"
+#alias grpyc="git status | awk '{if($3 ~ /pyc$/){printf $3\" \"}}'"
+#alias grpyc="git status | awk '{if($3 ~ /pyc$/){printf $3" "}}'"
 
 #alias gst='git status'
 

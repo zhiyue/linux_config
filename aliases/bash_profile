@@ -41,13 +41,7 @@ export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib
 export CLASSPATH=$HADOOP_HOME/lib:$JAVA_HOME/lib:$JRE_HOME/lib
 
 export PATH=$PATH:$HADOOP_HOME/bin:$JAVA_HOME/bin:$JRE_HOME/bin:$HIVE_HOME
-export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/WebGameStore:/home/ken/KuaiwanBackend/GameInfo:/home/ken/KuaiwanBackend/KuaiWanBox:/home/ken/KuaiwanBackend/GamePlay
-export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/WebGameStore/KwSearch
-export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/IpLocator
-export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/GameStore
-export PYTHONPATH=$PYTHONPATH:/home/ken/KuaiwanBackend/
-export PYTHONPATH=$PYTHONPATH:/home/ken/Dropbox/workspace/tutu
-export PYTHONPATH=$PYTHONPATH:/home/ken/Dropbox/workspace
+export PYTHONPATH=$PYTHONPATH:/home/ken/project/qvod/
 export PYTHONPATH=$PYTHONPATH:/Users/ken/workspace/wklken/1/
 export PYTHONPATH=$PYTHONPATH:/Users/ken/workspace/wklken/1/mdpress
 
