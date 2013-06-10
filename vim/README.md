@@ -1,189 +1,104 @@
-#vim
-需手动安装包: ctags,pep8
+###vim插件分类及快捷键
 
-基础教程可参考原先博文: http://blog.csdn.net/wklken/article/details/7533272
+> 给人一条Vim 命令，他能折腾一晚上；告诉他怎么自定义Vim 命令，他能捣腾一辈子
+> 
+> 生命不息,折腾不止
 
-配置了relative num,可参考: http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
 
-更新使用YoucompleteMe插件: https://github.com/Valloric/YouCompleteMe
 
-    1.vimrc中 Bundle 'Valloric/YouCompleteMe'
-    2. :BundleInstall
-    3. 看github上的readme, 根据系统，更新vim到7.0.3584以上的版本,编译YouCompleteMe
-    4. alias vim 到新编译的, eg.  mac下  alias vim='mvim -v'
+###写在前面
+
+    用vim,将近两年,用原生的用了很长一段时间,后来也折腾过几次,用过网上流行的配置,但总感觉很多地方不能满足需求.
     
-配置vim solarized主题(嫌麻烦的话修改vimrc中使用monokai主题吧)
-
-只装配色，进去的话效果不要，对应terminal要安装颜色方案
-
-    $ git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git
-    $ cd gnome-terminal-colors-solarized
-    $ ./install.sh
+    后来决定自己搞一个,参考了很多,往往一个功能有多个插件,会逐一尝试使用一段时间,之后才决定用哪个,例如补全,python的从pydiction到最近的jedi和python-mode,最终找到了YCM
     
-##插件列表
-
-    "D 使用Vundle来管理Vundle
-    Bundle 'gmarik/vundle'
-    --
-    "D 代码片段
-    Bundle 'vim-scripts/UltiSnips'
-    --
-    "D 状态栏增强
-    Bundle 'Lokaltog/vim-powerline'
-    --
-    "D 括号显示增强
-    Bundle 'kien/rainbow_parentheses.vim'
-    --
-    "D 更高效的移动  W/fx
-    Bundle 'Lokaltog/vim-easymotion'
-    --
-    "D for golang
-    Bundle 'jnwhiteh/vim-golang'
-    --
-    "D file browser
-    Bundle 'vim-scripts/The-NERD-tree'
-    --
-    "D tag browser
-    Bundle 'majutsushi/tagbar'
-    --
-    "D super tab
-    Bundle 'ervandew/supertab'
-    --
-    "D task list
-    Bundle 'vim-scripts/TaskList.vim'
-    --
-    "D edit history   同类Undotree
-    Bundle 'sjl/gundo.vim'
-    --
-    "D nerdcommenter
-    Bundle 'scrooloose/nerdcommenter'
-    --
-    "D surround
-    Bundle 'tpope/vim-surround'
-    --
-    "D for git 尚未用起来
-    Bundle 'tpope/vim-fugitive'
-    --
-    "D for python check
-    Bundle 'mitechie/pyflakes-pathogen'
-    Bundle 'vim-scripts/pep8'
-    --
-    "D 自动补全单引号，双引号等 Bundle 'underlog/ClosePairs'
-    Bundle 'Raimondi/delimitMate'
-    --
-    "for markdown
-    Bundle 'plasticboy/vim-markdown'
-    --
-    "for python auto complete
-    Bundle 'davidhalter/jedi-vim'
-    --
-    "for mru, recently opened files
-    Bundle 'vim-scripts/mru.vim'
-    --
-    "for nginx conf file highlight.   need to confirm it works
-    Bundle 'thiderman/nginx-vim-syntax'
-    --
-    "for copy/paste enhance
-    Bundle 'vim-scripts/YankRing.vim'
-    --
-    "for repeat -> enhance surround.vim
-    Bundle 'tpope/vim-repeat'
-    --
-    "for file search ctrlp
-    Bundle 'kien/ctrlp.vim'"
-
-
-#vim快捷键说明:
-
-##基础快捷键
-
-normal模式下
-快速查找
-
-    fa → 到下一个为a的字符处，你也可以fs到下一个为s的字符。
-    t, → 到逗号前的第一个字符。逗号可以变成其它字符。
-    3fa → 在当前行查找第三个出现的a。
-    F 和 T → 和 f 和 t 一样，只不过是相反方向。
-
-区域选择 <action>a<object> 或 <action>i<object>"]})
-action可以是任何的命令，如 d (删除), y (拷贝), v (可以视模式选择)。
-object 可能是： w 一个单词， W 一个以空格为分隔的单词， s 一个句字， p 一个段落。也可以是一个特别的字符："、 '、 )、 }、 ]。
-
-    di" 删除""内的内容，前提光标在"" 中
-    yi( 光标在()之间，则复制()之间的内容
-    dtx 删除字符直到遇见光标之后的第一个x字符
-    ytx 复制字符直到遇见光标之后的第一个x字符])
-    ci" （由 change operator 和 text-object i" 组成） 删除"" 中内容并进入插入模式
-
-假设你有一个字符串 (map (+) ("foo")).而光标键在第一个 o 的位置'
-
-    vi" → 会选择 foo.
-    va" → 会选择 "foo".
-    vi) → 会选择 "foo".
-    va) → 会选择("foo").
-    v2i) → 会选择 map (+) ("foo")
-    v2a) → 会选择 (map (+) ("foo"))
-
-v/y/d/c  -> i/a  -> { [ ( " '
- <start position><command><end position>
-
-    0y$ 复制整行
-    gg2x 删开头量字符
-
-在所有被选择的行后加上点东西：
-
-    <C-v>
-    选中相关的行 (可使用 j 或 <C-d> 或是 /pattern 或是 % 等……)
-    $ 到行最后
-    A, 输入字符串，按 ESC。
-
-标记
-
-    ma 将当前位置标记为a，26个字母均可做标记，mb、mc等等；
-    'a 跳转到a标记的位置； - 这是一组很好的文档内标记方法，在文档中跳跃编辑时很有用；
-
-其他
-
-    gU/gu 整行大写/小写
-    cw → 替换从光标所在位置后到一个单词结尾的字符
-    g_ → 到本行最后一个不是blank字符的位置。
-    对于数字 ctrl+a  递增增加 ctrl+x  递减
-    <C-r> → redo
-    % : 匹配括号移动，包括 (, {, [
-    * 和 #:  匹配光标当前所在的单词，移动光标到下一个（或上一个）匹配单词（*是下一个，#是上一个）
-    { 上一段(以空白行分隔) - } 下一段(以空白行分隔)
-    gd 跳到光标所在位置词(word)的定义位置 g(o)d(efine)
-
-
-命令模式下
-
-    m,nd - 快速删除第m到第n行 (delete)
-    m,ny - 复制第m到第n行 (yank)
-    m,nmt - 第m行到第n行剪切到第t行(move)
-    m,ncot -第m行到第n行复制到第t行(copy to)
-    << 左缩进 >>右缩进
-    ● :bn 和 :bp → 你可以同时打开很多文件，使用这两个命令来切换下一个或上一个文件。（陈皓注：我喜欢使用:n到下一个文件）
+    插件,首先,要能提高生产力(提升效率),所以要找最给力的,其次,要漂亮(快捷键和界面),用着有一点点不舒服就自定义,最后,才是酷(装X神器....额,不提倡,(╯‵□′)╯︵┻━┻)
     
-插入模式下
+    
 
-    Ctrl-t增加缩进
-    Ctrl-d减小缩进。
 
-visual mode
+###vim基本用法
 
-    V + j/k  选中多行  -> y/d/x 赋值删除
-    Vap  选中一个段落
-    Vaw  单词 -> Va2w
-    Vas  选中一个句子
-宏操作
+初学者: [vim训练稿](http://blog.csdn.net/wklken/article/details/7533272)
+两年前的三月份,第一次开始使用vim,后来整理了一份,对着敲几遍
 
-    ma 将当前位置标记为a，26个字母均可做标记，mb、mc等等；
-    'a 跳转到a标记的位置； - 这是一组很好的文档内标记方法，在文档中跳跃编辑时很有用；
-    qa 将之后的所有键盘操作录制下来，直到再次在命令模式按下q，并存储在a中；
-    @a 执行刚刚记录在a里面的键盘操作；
-    @@ 执行上一次的macro操作；'
+推荐: 耗子叔的 [简明vim练级攻略](http://coolshell.cn/articles/5426.html)
 
-##扩展快捷键
+或者,玩游戏 [vim大冒险](http://vim-adventures.com/)
+
+###使用说明
+
+1. 使用原生vim,最好先熟悉了再来看插件,插件之所以为插件,辅助性质
+
+2. 以下插件,仅介绍用途优点等,详细配置可以在github中搜索查看详细用途和配置,在github没文档的,可以进插件目录找文档或代码
+
+   当前vim使用配置,在vimrc中查看
+   
+   快捷键为插件默认/或者当前配置vimrc定义的,如果需要修改,查看vimrc中对插件配置进行修改 [sd]为自定义 [d]为默认
+   
+   有什么问题,先看插件文档说明->代码选项->github上的issues->google it
+   
+   相信我,你遇到的问题,一定别人也遇到了,大部分可解决,少部分无解….
+   
+   二八定律,关注可以最大提升自身生产力的那20%插件,如何配置,还需要自己去亲自实践
+
+2. 由于平时会使用python和golang,所以语言方面的配置偏向于这两个,其它的可以参照网上配置(通用的插件可以配置,具体语言插件需要自己去研究)
+
+
+3. fork一份
+   
+   搞一份符合自己习惯的vim配置,当然,欢迎推荐好用更酷的插件配置:)
+   
+   我的配置也会不定期更新
+
+--------------
+
+
+###配置步骤
+
+1. clone到本地,配置到linux个人目录
+
+
+2. 安装依赖包
+   ctags,pep8,pyflake,pylint
+   
+3. 安装插件
+
+
+4. 可能遇到的问题:
+
+   编译相关插件,修改配置
+ 
+  
+   * 相对行号
+   
+   vimrc中配置,如果不习惯,可以去掉,[相关参考](http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/)
+
+   * 编译自动补全YouCompleteMe
+   
+   [文档](https://github.com/Valloric/YouCompleteMe)
+   这个插件需要Vim 7.3.584,所以,如果vim版本太低,需要[编译安装](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source)
+   
+   * 配置主题
+   
+   到vimrc中修改colortheme,可以使用molokai(用惯sublimetext2的童鞋很熟悉)
+   
+   默认配置的是[solarized dark主题](https://github.com/altercation/vim-colors-solarized)
+   
+   想要修改终端配色为solarized可以参考 [这里](https://github.com/sigurdga/gnome-terminal-colors-solarized)
+
+
+###截图
+
+solarized主题 
+![solarized](https://github.com/wklken/gallery/blob/master/vim/solarized.png?raw=true)
+
+molokai主题
+![molokai](https://github.com/wklken/gallery/blob/master/vim/molokai.png?raw=true)
+
+###自定义快捷键说明
+
+以下快捷键中<leader>==
 
     F1   关掉，防止跳出帮助
     F2  set nu/nonu
@@ -192,7 +107,7 @@ visual mode
     F5  set paste/nopaste
     F6  syntax on/off
     空格 /开启查找
-    Y   =y$   复制到行尾 
+    Y   =y$   复制到行尾
     w!!  以sudo的权限保存
     kj   <Esc>，不用到角落去按esc了
     t    新起一行，下面，不进入插入模式
@@ -215,124 +130,317 @@ visual mode
 
     ,p 开启文件搜索 ctrlp
     ,/ 去除匹配高亮
+    
+    
+ 
+###插件及其快捷键说明
 
-##插件相关快捷键
-###easymotion
+图片有点多，展示有点慢，截得不是很专业，耐心看完:)
 
-    ,,w 快速单词跳转
-    ,,fx 快速查找字符x
+> 插件管理
 
-###thenerdtree
+1. ####[gmarik/vundle](https://github.com/gmarik/vundle)
 
-    ,n 打开树形目录结构
-    p 到上层目录
-    K 到同目录第一个节点
-    J 到同目录最后一个节点
-
-###tagbar
-
-    <F9> 打开标签列表
-
-###tasklist
-
-    ,td 打开TODO列表
-
-###gundo
-
-    ,h 打开文件编辑历史列表
-
-###nerdcommenter
-
-    ,cc   单行注释
-    ,cu   解开注释
-
-https://github.com/scrooloose/nerdcommenter
-
-###surround
-
-    cs"' [inside]
-    "Hello world!" -> 'Hello world!'
-    ds"
-    "Hello world!" -> Hello world
-    ysiw"
-    Hello world -> "Hello world!"
-
-###fugitive
-https://github.com/tpope/vim-fugitive
-
-###pep8 
-need to install pep8
-
-    ,8   check the py file
-
-###taglist
-
-    F8   打开taglist
-
-###jedi
-
-    <tab> or  ctrl+p 自动补全
-    ,r  重命名
-    ,d  go to define, 跳转到声明处
-    ,g  跳转到命令声明处
-    K   查看python文档
-
-###mru
-https://github.com/vim-scripts/mru.vim
-
-    ,f  show recently opened files
-
-###auto
-https://github.com/vim-scripts/auto.git
-
-   1.Normal mode
-    ;;      Exit without saving
-    ,,      Save and exit
-
-   2.Insert mode
-    ;;      return Normal mode
-    ,,      return Normal mode
-    mm      return Normal mode
-    <Alt-j>  Down
-    <Alt-k> Up
-    <Alt-h> Left
-    <Alt-l>  Right
-### python_match
-
-    % 在if/elif/else  try/except/catch for/continue/break while/continue/break 行走
+    DONE, 必装,用于管理所有插件
+    
+    命令行模式下管理命令:
+        
+        :BundleInstall     install
+        :BundleInstall!    update
+        :BundleClean       remove plugin not in list
 
 
-##待考察插件
+> 导航及搜索
 
-    -neocomplcache
-    -Syntastic
-    py.test
-    bufkill
-    vim-unimpaired
-    Bundle 'FencView.vim' #自动识别文件编码；
-    MiniBuferExplorer/Buferexplorer
-    TagHighlight
-    -Conque
-    vim-javascript  for js
-    sparkup , for zen coding
-    -PeepOpen
-    jslint js 语法校验
-    Gist 分享代码到 github 的小工具
-    web-indent JavaScript 的语法缩进
-    jsbeautify JavaScript 代码格式化，快捷键是 <Leader>ff
-    Scrath 打开一个临时的缓冲区随便记录东西，快捷键是 <Leader>S
-    genutils 给 vim 添加一些函数库
-    vim-lesscss 高亮 lesscss 格式
-    vim-css3 高亮 css3 中的属性
+1. ####[vim-scripts/The-NERD-tree](https://github.com/vim-scripts/The-NERD-tree)
+
+   DONE
+   必装,开启目录树导航
+  
+        [sd]
+            ,n 打开树形目录结构
+            p 到上层目录
+            K 到同目录第一个节点
+            J 到同目录最后一个节点
+   演示
+   ![thenerdtree](https://github.com/wklken/gallery/blob/master/vim/thenerdtree.gif?raw=true)
+   
+2. ####[majutsushi/tagbar](https://github.com/majutsushi/tagbar)
+
+   DONE,必装,标签导航,纬度和taglist不同
+   
+       [sd] <F9> 打开
+   演示
+   ![tagbar](https://github.com/wklken/gallery/blob/master/vim/tagbar.gif?raw=true)
+   
+3. ####[vim-scripts/taglist.vim](https://github.com/vim-scripts/taglist.vim)
+
+    DONE,必装
+
+        [sd] <F8>打开
+
+   演示:
+   ![taglist](https://github.com/wklken/gallery/blob/master/vim/taglist.png?raw=true)
+   
+4. ####[kien/ctrlp.vim](https://github.com/hdima/python-syntax)
+
+   文件搜索,ack需要依赖于ruby,不喜欢有太多依赖的,除非十分强大
+
+   演示
+   ![ctrip](https://github.com/wklken/gallery/blob/master/vim/ctrlp.gif?raw=true)
+    
+> 显示增强
+
+    被动技能,无快捷键
+
+1. ####[Lokaltog/vim-powerline](https://github.com/Lokaltog/vim-powerline)
+
+   DONE, 必装
+   
+   演示
+   ![powerline](https://github.com/wklken/gallery/blob/master/vim/powerline.png?raw=true)
+
+2. ####[kien/rainbow_parentheses.vim](https://github.com/kien/rainbow_parentheses.vim)
+
+   DONE,必装
+   
+   演示
+   ![rainbow](https://github.com/wklken/gallery/blob/master/vim/rainbow_parentheses.png?raw=true)
+
+3. ####[Yggdroot/indentLine](https://github.com/Yggdroot/indentLine)
+
+   DONE,装不装看个人喜好了,缩进标识
+ 
+  
+   另一个类似的,整块背景色的的,nathanaelkane/vim-indent-guides
+   
+   看来看去还是st2的好看,唉
+   
+   调整颜色和solarized一致,不至于太显眼影响注意力,可以根据自己主题设置颜色([颜色](http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim?file=Xterm-color-table.png))
+   
+   演示:
+   ![indentline](https://github.com/wklken/gallery/blob/master/vim/indentline.png?raw=true)
+
+4. ####[altercation/vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
+
+   DONE, 主题,目前我使用的,看起来舒服
+   
+
+5. ####[tomasr/molokai](https://github.com/tomasr/molokai)
+
+   DONE, 另一个主题,可选,偶尔换换味道
+
+
+> 快速移动
+
+    主动技能,需要快捷键
+
+1. ####[Lokaltog/vim-easymotion](https://github.com/Lokaltog/vim-easymotion)
+
+   跳转到光标后任意位置
+   
+   配置(我的leader键配置 let g:mapleader = ',')
+   
+        ,, + w  跳转
+        ,, + fe  查找'e',快速跳转定位到某个字符位置
+
+   演示
+   ![easy_motion](https://github.com/wklken/gallery/blob/master/vim/easymotion.gif?raw=true)
+   
+> 自动补全及快速编辑
+
+    主动技能,需要快捷键,高效编辑无上利器
+
+
+1. ####[Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
+   YCM是目前用到的最好的自动不全插件,用这个写代码太舒畅了
+   
+   这个需要自己去看官方的配置方式,演示在官方github有
+   
+   需要Vim 7.3.584 ([如何编译vim](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source))
+   需要编译这个插件(见github文档)
+   
+   这个插件包含了以下四个插件功能,所以不需要装下面四个
+
+        clang_complete
+        AutoComplPop
+        Supertab
+        neocomplcache
+        jedi(对python的补全)
+
+2. ####[vim-scripts/UltiSnips](https://github.com/vim-scripts/UltiSnips)
+   快速插入自定义定义好的代码片段
+   
+   自动不全加这个,高效必备
+   
+   演示
+   ![ultisnips](https://github.com/wklken/gallery/blob/master/vim/utilsnips.gif?raw=true)
+
+2. ####[scrooloose/nerdcommenter](https://github.com/scrooloose/nerdcommenter)
+
+   快速批量加减注释
+   
+       [d] shift+v+方向键选中(默认当前行)   ->  ,cc  加上注释  -> ,cu 解开注释
+   
+   演示
+   ![nerdcommenter](https://github.com/wklken/gallery/blob/master/vim/nerdcomment.gif?raw=true)
+
+3. ####[tpope/vim-surround](https://github.com/tpope/vim-surround)
+   快速给词加环绕符号,例如引号
+       
+   [tpope/vim-repeat](https://github.com/tpope/vim-repeat)
+   repeat进行增强,'.'可以重复命令
+       
+       [d]cs"' [inside]
+          "Hello world!" -> 'Hello world!'
+          ds"
+          "Hello world!" -> Hello world!
+          ysiw"
+          Hello -> "Hello"
+   演示
+   ![surround](https://github.com/wklken/gallery/blob/master/vim/surround.gif?raw=true)
+   
+
+4. ####[Raimondi/delimitMate](https://github.com/Raimondi/delimitMate)
+
+   输入引号,括号时,自动补全
+
+   演示
+   ![delimitmate](https://github.com/wklken/gallery/blob/master/vim/delimate.gif?raw=true)
+
+
+> 具体语言
+
+    主要是python  其它语言以及前端的,用得少没有研究使用过
+
+    python   golang   markdown
+    
+    需要其它语言支持的,可以到github上捞,上面很多流行的vim配置,eg. spf13-vim
+
+1. ####[python-syntax](https://github.com/hdima/python-syntax)
+    
+   python语法高亮,就是python.vim,在github,有维护和更新
+
+2. ####[scrooloose/syntastic](https://github.com/scrooloose/syntastic)
+
+   静态语法及风格检查,支持多种语言
+   修改了下标记一列的背景色,原有的背景色在solarized下太难看了…..
+   
+   演示
+   ![syntastic](https://github.com/wklken/gallery/blob/master/vim/syntastic.png?raw=true)
+
+3. ####[kevinw/pyflakes-vim](https://github.com/kevinw/pyflakes-vim)
+
+    虽然这个的作者推荐使用syntastic,但是这个插件对于pythoner还是很需要的
+    
+    因为有一个特牛的功能,fly check,即,编码时在buffer状态就能动态查错标记,弥补syntastic只能保存和打开时检查语法错误的不足
+    
+    演示
+    ![pyflakes](https://github.com/wklken/gallery/blob/master/vim/pyflakes.png?raw=true)
+
+4. ####[jnwhiteh/vim-golang](https://github.com/jnwhiteh/vim-golang)
+
+   golang语法高亮
+   
+   golang刚入门使用,项目中还没正式开始,目前很多golang的手册有配置vim的介绍,后续有需求再弄
+
+
+5. ####[plasticboy/vim-markdown](https://github.com/plasticboy/vim-markdown)
+
+   markdown语法,编辑md文件
+
+6. ####[pangloss/vim-javascript](https://github.com/pangloss/vim-javascript)
+
+   偶尔会看看js,频率不高
+
+
+> 其它扩展增强
+
+    根据自身需求自取配置,不需要的话自己注解
+
+1. ####[vim-scripts/TaskList.vim](https://github.com/vim-scripts/TaskList.vim)
+   查看并快速跳转到代码中的TODO列表
+   
+   重构代码时一般通读,标记修改位置,非常实用
+   
+       [sd]
+       ,td 打开todo列表
+   
+   演示
+   ![tasklist](https://github.com/wklken/gallery/blob/master/vim/tasklist.gif?raw=true)
+
+2. ####[tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
+   
+   git插件
+   不是很习惯,所以用的次数太少,目前和现有配置快捷键有冲突,尚未解决
+
+   
+3. ####[sjl/gundo.vim](https://github.com/sjl/gundo.vim)
+
+   编辑文件时光机
+   
+       [sd] ,h  查看文件编辑历史
+   
+
+4. ####[vim-scripts/mru.vim](https://github.com/vim-scripts/mru.vim)
+   
+   最近打开文件列表
+   
+       [sd] ,f show recently opened files
+
+
+
+5. ####[thiderman/nginx-vim-syntax](https://github.com/thiderman/nginx-vim-syntax)
+
+   nginx配置文件语法高亮,常常配置服务器很有用
 
 
 
 
-写在最后：
-后续不会有大的更新了，够用就好
 
-wklken 凌岳(Pythoner/vimer/伪geek)  
-emali: wklken@yeah.net  
-blog: http://blog.csdn.net/wklken  
-2013-03-03
 
+> 待考察的
+
+1. ####sjl/vitality.vim
+
+2. ####vim-scripts/Conque-Shell
+   用过一阵,不大适应,回头瞅瞅
+
+3. ####vim-scripts/YankRing.vim
+   剪贴板增强的,装了一段时间发现用得太少,卸了….
+   回头看看
+4. ####vim-scripts/auto.git
+   用过一阵，快速切换模式的
+   
+> 那些使用过弃用的
+
+1. ####[vim-scripts/python_match.vim](https://github.com/vim-scripts/python_match.vim)
+
+   特性:重定义%,可以在python的if/elif/else  try/except/finally等结构中跳转,但是平时百分号用的太少,主要是不顺手,卸了
+   
+   有兴趣可以试试
+
+2. ####[yonchu/accelerated-smooth-scroll](https://github.com/yonchu/accelerated-smooth-scroll)
+   上下移动时,平滑滚动,用了一段时间,不大适应,卸了,看个人喜好
+
+3. ####[ervandew/supertab](https://github.com/ervandew/supertab)
+   YouCompleteMe自带包含了,所以不需要了
+
+以上插件并没有buffer管理的,可以搜索安装MiniBuferExplorer/Buferexplorer，插件不错，但是目前没用习惯，暂时没加入
+
+
+
+------------------------
+
+
+The End!
+
+wklken (凌岳/pythoner/vim党预备党员)
+
+Email: wklken@yeah.net
+
+Github: https://github.com/wklken
+
+Blog: http://blog.csdn.net/wklken(待迁移)
+
+2013-06-11 于深圳
