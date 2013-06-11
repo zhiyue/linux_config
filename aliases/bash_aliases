@@ -259,7 +259,7 @@ switchfile() {
 #查看自己常用命令top n
 # View most commonly used commands. depends on your history output format
 used(){
-if [[ $1 ]]
+if [ $1 ]
 then
     history | awk '{print $4}' | sort | uniq -c | sort -nr | head -n $1
 else

@@ -25,7 +25,7 @@ fi
 # Don't store duplicate lines in history
 export HISTCONTROL=ignoreboth
 # Apend to history instead of overwriting
-shopt -s histappend
+#shopt -s histappend
 # Unify histories across screen sessions
 PROMPT_COMMAND="$PROMPT_COMMAND;history -a; history -n"
 
@@ -65,9 +65,9 @@ PROMPT_COMMAND='echo -ne "\033]0;[${HOSTSHORT}:`basename $PWD`\$]${PWD}\007"'
 PS1='[\u@\w\$] '
 
 #.bashrc
-if [ -f /etc/bashrc ]; then 
-        . /etc/bashrc
-fi
+#if [ -f /etc/bashrc ]; then 
+#        . /etc/bashrc
+#fi
 
 #all aliases
 ALIASES=`\ls ~/.*aliases`
@@ -90,7 +90,7 @@ done
 
 #need to install linuxlogo, sudo apt-get install linuxlogo
 which linuxlogo > /dev/null 2>&1
-if [ $? == 0 ]
+if [ $? = 0 ]
 then
     linuxlogo -L ubuntu -a
 fi
