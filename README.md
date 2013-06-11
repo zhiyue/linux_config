@@ -21,11 +21,13 @@ linux_config
 
 ####cmdcheatsheet
 
+用来一个命令搜索自己想要的东西
+
 linux shell下小抄速查工具    [链接](https://github.com/wklken/cmdcheatsheet)
 
 ###NOTICE
 
-更新完毕
+2013-06-11 更新完毕
 
 ###TODO LIST:
 
@@ -62,9 +64,17 @@ vim配置，点这里  [k-vim](https://github.com/wklken/k-vim)
 
 建议fork后自己修改维护一份，每个人习惯不一样
 
-THE END!
+------------------------
 
 
-凌岳(Pythoner/vimer/伪geek)
-emali: wklken@yeah.net
-blog: http://blog.csdn.net/wklken
+The End!
+
+wklken (凌岳/pythoner/vim党预备党员)
+
+Email: wklken@yeah.net
+
+Github: https://github.com/wklken
+
+Blog: http://blog.csdn.net/wklken(待迁移)
+
+2013-06-11 于深圳
