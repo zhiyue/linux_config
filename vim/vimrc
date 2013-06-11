@@ -409,6 +409,7 @@ Bundle 'vim-scripts/The-NERD-tree'
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$' ]
+let g:netrw_home='~/bak'
 
 "标签导航
 Bundle 'majutsushi/tagbar'
