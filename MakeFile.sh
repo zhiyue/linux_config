@@ -3,6 +3,11 @@ cd .
 
 CF_DIR=`pwd`
 
+#git submodule init
+#git submodule update
+#更新配置的子模块到最新版本
+git submodule -q foreach git pull -q origin master
+
 #.bash_profile
 ln -sf $CF_DIR/aliases/bash_profile ~/.bash_profile
 
@@ -32,10 +37,11 @@ done
 #vim config
 #ln -sf $CF_DIR/k-vim ~/.vim
 #if [ -L $CF_DIR/k-vim/vim ]
-#then 
+#then
 #    rm $CF_DIR/k-vim/vim
 #fi
 #ln -sf $CF_DIR/k-vim/vimrc ~/.vimrc
+#自动安装配置vim
 sh -x $CF_DIR/k-vim/install.sh
 
 
