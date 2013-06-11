@@ -68,9 +68,16 @@
 
 2. 安装依赖包
    ctags,pep8,pyflake,pylint
+   sudo apt-get install ctags
+   brew install ctags
+
+   sudo pip install pyflakes
+   sudo pip install pep8
    
 3. 安装插件
-
+   :BundleClean to clean up unused plugins
+:BundleInstall to install newly added plugins
+:BundleInstall! to upgrade all plugins
 
 4. 可能遇到的问题:
 
@@ -119,7 +126,7 @@ molokai主题
     kj   <Esc>，不用到角落去按esc了
     t    新起一行，下面，不进入插入模式
     T    新起一行，上面
-    ,a   全选
+    ,sa   全选(select all)
     hjkl  上下左右，强迫使用，要解开的自己改
     ctrl + jkhl 进行上下左右窗口跳转,不需要ctrl+w+jkhl
 
@@ -192,7 +199,7 @@ molokai主题
    
 4. ####[kien/ctrlp.vim](https://github.com/hdima/python-syntax)
 
-   文件搜索,ack需要依赖于ruby,不喜欢有太多依赖的,除非十分强大
+   文件搜索,ack/Command-T需要依赖于外部包,不喜欢有太多依赖的,除非十分强大
 
    演示
    ![ctrip](https://github.com/wklken/gallery/blob/master/vim/ctrlp.gif?raw=true)
@@ -229,6 +236,10 @@ molokai主题
    演示:
    ![indentline](https://github.com/wklken/gallery/blob/master/vim/indentline.png?raw=true)
 
+4. ####[bronson/vim-trailing-whitespace](https://github.com/bronson/vim-trailing-whitespace)
+
+   将代码行最后无效的空格标红
+
 4. ####[altercation/vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
 
    DONE, 主题,目前我使用的,看起来舒服
@@ -254,6 +265,10 @@ molokai主题
 
    演示
    ![easy_motion](https://github.com/wklken/gallery/blob/master/vim/easymotion.gif?raw=true)
+
+2. ####[vim-scripts/matchit.zip](https://github.com/vim-scripts/matchit.zip)
+
+   % 匹配成对的标签，跳转
    
 > 自动补全及快速编辑
 
@@ -315,6 +330,14 @@ molokai主题
 
    演示
    ![delimitmate](https://github.com/wklken/gallery/blob/master/vim/delimate.gif?raw=true)
+
+5. ####[godlygeek/tabular](https://github.com/godlygeek/tabular)
+
+   code alignment
+        
+        [sd]
+        ,a=  按等号切分格式化
+        ,a:  按逗号切分格式化
 
 
 > 具体语言
@@ -396,13 +419,17 @@ molokai主题
    
        [sd] ,f show recently opened files
 
-
-
 5. ####[thiderman/nginx-vim-syntax](https://github.com/thiderman/nginx-vim-syntax)
 
    nginx配置文件语法高亮,常常配置服务器很有用
 
+6. ####[Glench/Vim-Jinja2-Syntax](https://github.com/Glench/Vim-Jinja2-Syntax)
 
+   jinja2 语法高亮
+
+7. ####[nono/jquery.vim](https://github.com/nono/jquery.vim)
+
+   jquery高亮 
 
 
 
@@ -433,6 +460,9 @@ molokai主题
 
 3. ####[ervandew/supertab](https://github.com/ervandew/supertab)
    YouCompleteMe自带包含了,所以不需要了
+
+4. ####[nathanaelkane/vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides)
+   块状的缩进标识，但是总是配得很丑，废弃用了竖线的那个
 
 以上插件并没有buffer管理的,可以搜索安装MiniBuferExplorer/Buferexplorer，插件不错，但是目前没用习惯，暂时没加入
 
