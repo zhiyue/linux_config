@@ -1,24 +1,45 @@
 linux_config
 ============
-NOTICE:最近将会对整体结构进行大改
 
-目标：
-
-1.一件安装脚本，搞定包括编译vim，定制alias等等
-
-2.兼容mac和linux两种环境
-
-3.可选配置zsh
-
-so, 等待更新吧
-
-2013-05-14
-----------------------------
 
 我的linux下配置，一键部署，可供参考
 
-My linux config file. .bash_profile .alias bin .vimrc etc.
+    .bash_profile(基本设置)
+    .alias(命令别名)
+    bin(一些自己书写的工具脚本)
+    .vimrc/.vim (一键部署强大的vim)
+    **completion (常用工具命令补全)
+    *.conf  (常用工具配置)
 
+
+包含两个子模块
+
+####k-vim
+一键vim配置
+
+如果仅是需要vim配置，点这里  [k-vim](https://github.com/wklken/k-vim)
+
+####cmdcheatsheet
+
+linux shell下小抄速查工具    [链接](https://github.com/wklken/cmdcheatsheet)
+
+###NOTICE
+
+更新完毕
+
+###TODO LIST:
+
+1.定制更给力的alias
+
+2.将zsh的配置更新上来
+
+----------------------------
+
+###部署
+
+一键配置，直接执行
+
+    sh -x MakeFile.sh
 
 - 建议安装包
 
@@ -28,53 +49,22 @@ My linux config file. .bash_profile .alias bin .vimrc etc.
     pep8
 
 
-- LINUX:
+vim配置，点这里  [k-vim](https://github.com/wklken/k-vim)
 
-一键配置，直接执行
-
-    sh -x MakeFile.sh
-
-- VIM:
-color theme:tomasr-molokai
-
-新增26个插件,调试通过,可以借鉴
+30+个插件,调试通过,可以借鉴
 
 ![ScreenShot](https://github.com/wklken/gallery/blob/master/vim/solarized.png?raw=true)
 
 
-管理方式：
+用什么不用什么，还是根据自己需要吧
 
-通过submodule 控制 vundle
-
-再通过vundle 控制绑定的所有插件
-
-配置执行命令顺序(最后一步执行时间可能稍长)  
-    
-    0. linux_config目录下（根目录）
-
-    1. git submodule init
-
-    2. git submodule update
-
-    3. vim #进入vim
-
-    4. :BundleInstall  #安装插件
-
-
-vim的效率和自身配置能力成正比，平时稍微花点时间折腾下，提升效率是很明显的  
-
-本配置的vim快捷键参照 vim/README.md
-
-
-用什么不用什么，还是根据自己需要吧  
-
-不定时更新，有什么好的东西也可以推荐下哈  
+不定时更新，有什么好的东西也可以推荐下哈
 
 建议fork后自己修改维护一份，每个人习惯不一样
 
-THE END!  
+THE END!
 
 
-凌岳(Pythoner/vimer/伪geek)  
-emali: wklken@yeah.net  
-blog: http://blog.csdn.net/wklken  
+凌岳(Pythoner/vimer/伪geek)
+emali: wklken@yeah.net
+blog: http://blog.csdn.net/wklken
