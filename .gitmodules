@@ -1,6 +1,6 @@
-[submodule "k-vim"]
-	path = k-vim
-	url = git@github.com:wklken/k-vim.git
 [submodule "cmdcheatsheet"]
 	path = cmdcheatsheet
 	url = git@github.com:wklken/cmdcheatsheet.git
+[submodule "k-vim"]
+	path = k-vim
+	url = git@github.com:wklken/k-vim.git
