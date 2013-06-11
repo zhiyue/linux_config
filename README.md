@@ -39,7 +39,7 @@ color theme:tomasr-molokai
 
 新增26个插件,调试通过,可以借鉴
 
-![ScreenShot](https://raw.github.com/wklken/linux_config/master/vim/gui_vim.png)
+![ScreenShot](https://github.com/wklken/gallery/blob/master/vim/solarized.png?raw=true)
 
 
 管理方式：
