@@ -30,12 +30,13 @@ do
 done
 
 #vim config
-ln -sf $CF_DIR/vim ~/.vim
-if [ -L $CF_DIR/vim/vim ]
-then 
-    rm $CF_DIR/vim/vim
-fi
-ln -sf $CF_DIR/vim/vimrc ~/.vimrc
+#ln -sf $CF_DIR/k-vim ~/.vim
+#if [ -L $CF_DIR/k-vim/vim ]
+#then 
+#    rm $CF_DIR/k-vim/vim
+#fi
+#ln -sf $CF_DIR/k-vim/vimrc ~/.vimrc
+sh -x $CF_DIR/k-vim/install.sh
 
 
 #bin
