@@ -115,6 +115,8 @@ alias psmem10='ps auxf | sort -nr -k 4'
 ## Get server cpu info ##
 alias cpuinfo='lscpu'
 
+alias md5='md5sum'
+
 alias rmpyc='find . -name "*.pyc" -exec rm -rf {} \; >> /dev/null 2>&1'  #递归删除目录下所有pyc
 alias now='date +"%Y-%m-%d %T"'
 
