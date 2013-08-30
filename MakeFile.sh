@@ -73,4 +73,5 @@ fi
 ln -s $CF_DIR/config/ssh-config ~/.ssh/config
 
   #for tmux
-ln -s $CF_DIR/config/tmux-config ~/.tmux.conf
+#ln -s $CF_DIR/config/tmux-config ~/.tmux.conf
+ln -s $CF_DIR/config/tmux.conf ~/.tmux.conf
