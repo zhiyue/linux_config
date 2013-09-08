@@ -11,7 +11,7 @@ unset USERNAME
 #osx : brew install bash-completion
 if [ "$PS1" ]
 then
-    if [ -f /etc/bash_completion ] 
+    if [ -f /etc/bash_completion ]
     then
         if [ -r /etc/bash_completion ]
         then
@@ -62,12 +62,18 @@ export SVN_EDITOR=vim
 #shell promaote and title.
 PROMPT_COMMAND='echo -ne "\033]0;[${HOSTSHORT}:`basename $PWD`\$]${PWD}\007"'
 #PS1='[\u@\h:${YROOT_NAME}\w\$] '
-PS1='[\u@\w\$] '
+#PS1='[\u@\w\$] '
 
 #.bashrc
-#if [ -f /etc/bashrc ]; then 
+#if [ -f /etc/bashrc ]; then
 #        . /etc/bashrc
 #fi
+
+#.markrc
+if [ -f ~/.markrc ]; then
+        . ~/.markrc
+fi
+
 
 #all aliases
 ALIASES=`\ls ~/.*aliases`

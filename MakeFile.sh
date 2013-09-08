@@ -11,6 +11,8 @@ git submodule -q foreach git pull -q origin master
 #.bash_profile
 ln -sf $CF_DIR/aliases/bash_profile ~/.bash_profile
 
+# jump tool
+ln -sf $CF_DIR/aliases/markrc ~/.markrc
 
 #alias
 ALIASES_DIR="$CF_DIR/aliases"
