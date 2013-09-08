@@ -136,6 +136,9 @@ alias nginx='/etc/init.d/nginx'
 alias redis='/etc/init.d/redis_6379'
 alias rediscli='redis-cli'
 
+#get myip
+alias myip='curl ifconfig.me'
+
 #for tmux
 alias tm='tmux -2'
 alias tma='tmux -2 attach'

@@ -62,7 +62,7 @@ export SVN_EDITOR=vim
 #shell promaote and title.
 PROMPT_COMMAND='echo -ne "\033]0;[${HOSTSHORT}:`basename $PWD`\$]${PWD}\007"'
 #PS1='[\u@\h:${YROOT_NAME}\w\$] '
-#PS1='[\u@\w\$] '
+#PS1='[\u@Luna \w\$] '
 
 #.bashrc
 #if [ -f /etc/bashrc ]; then
@@ -113,5 +113,3 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
-export PS1='[\u@\w\$] '
-#export PS1='[\u@\h:${YROOT_NAME}\w\$] '
