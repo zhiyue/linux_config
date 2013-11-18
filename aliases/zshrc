@@ -56,6 +56,8 @@ source ~/.bash_aliases
 source ~/.git_aliases
 source ~/.bash_profile
 
+
+
 #保存历史
 export HISTSIZE=20000
 export HISTFILE="$HOME/.history"
@@ -96,3 +98,10 @@ compctl -K _completemarks unmark
 # for show
 #export PS1="[%n@Luna: %~] "
 
+
+# for mac dircolors
+if brew list | grep coreutils > /dev/null ; then
+  PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+  alias ls='ls -F --show-control-chars --color=auto'
+  eval `gdircolors -b $HOME/.dir_colors`
+fi

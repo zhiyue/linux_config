@@ -20,7 +20,7 @@ alias vim="mvim -v"
 
 alias vi="vim"
 alias edit="vim"
-alias grep="grep -rnE --color"
+alias grep="grep -nE --color"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias mkdir="mkdir -pv"
