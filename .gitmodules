@@ -1,9 +1,9 @@
 [submodule "cmdcheatsheet"]
 	path = cmdcheatsheet
-	url = git@github.com:wklken/cmdcheatsheet.git
+	url = https://github.com/wklken/cmdcheatsheet.git
 [submodule "k-vim"]
 	path = k-vim
-	url = git@github.com:wklken/k-vim.git
+	url = https://github.com/wklken/k-vim.git
 [submodule "dircolors-solarized"]
 	path = dircolors-solarized
-	url = git@github.com:seebi/dircolors-solarized.git
+	url = https://github.com/seebi/dircolors-solarized.git
