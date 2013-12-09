@@ -11,3 +11,7 @@
 #	proxy = http://127.0.0.1:8103
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
