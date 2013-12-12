@@ -6,7 +6,7 @@ alias gd='git diff'
 alias gr='git rm'
 alias gs='git status'
 alias gss='git status -s'
-alias gl='git log'
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit"
 alias gc='git commit -m'
 alias gull='git pull origin'
 alias gush='git push origin'
